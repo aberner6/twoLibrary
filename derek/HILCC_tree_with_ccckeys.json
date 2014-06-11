@@ -1,0 +1,1654 @@
+{
+	"name": "HILCC Classification",
+	"children": [{
+		"name": "Arts, Architecture & Applied Arts",
+		"ccckey": 1219,
+		"children": [{
+			"name": "Architecture",
+			"ccckey": 1184
+		}, {
+			"name": "Arts & Crafts",
+			"ccckey": 1032
+		}, {
+			"name": "Fine Arts (General)",
+			"ccckey": 1225
+		}, {
+			"name": "Gardens, Landscape Architecture & Parks",
+			"ccckey": 1150
+		}, {
+			"name": "Visual Arts",
+			"ccckey": 1085,
+			"children": [{
+				"name": "Decorative Arts",
+				"ccckey": 1162
+			}, {
+				"name": "Drawing, Design & Illustration",
+				"ccckey": 1047
+			}, {
+				"name": "Painting",
+				"ccckey": 1116
+			}, {
+				"name": "Photography",
+				"ccckey": 1014
+			}, {
+				"name": "Print Media",
+				"ccckey": 1103
+			}, {
+				"name": "Sculpture",
+				"ccckey": 1256
+			}, {
+				"name": "Visual Arts (General)",
+				"ccckey": 1030
+			}]
+		}]
+	}, {
+		"name": "Business & Economics",
+		"ccckey": 1044,
+		"children": [{
+			"name": "Business",
+			"ccckey": 1190,
+			"children": [{
+				"name": "Business Education",
+				"ccckey": 1514
+			}, {
+				"name": "Commerce",
+				"ccckey": 1516,
+				"children": [{
+					"name": "Accounting",
+					"ccckey": 1408
+				}, {
+					"name": "Advertising",
+					"ccckey": 1410
+				}, {
+					"name": "Business Communication",
+					"ccckey": 1409
+				}, {
+					"name": "Buying, Selling, Sales Personnel & Sales Executives",
+					"ccckey": 1564
+				}, {
+					"name": "Commerce (General)",
+					"ccckey": 1033
+				}, {
+					"name": "Commerce Vocational Guidance",
+					"ccckey": 1406
+				}, {
+					"name": "Industrial Psychology",
+					"ccckey": 1566
+				}, {
+					"name": "International Commerce",
+					"ccckey": 1404
+				}, {
+					"name": "Local Commerce",
+					"ccckey": 1405
+				}, {
+					"name": "Marketing & Distribution of Products",
+					"ccckey": 1407
+				}, {
+					"name": "Office Organization & Management",
+					"ccckey": 1565
+				}, {
+					"name": "Personnel Management & Employment Management",
+					"ccckey": 1567
+				}, {
+					"name": "Retail Trade",
+					"ccckey": 1563
+				}]
+			}, {
+				"name": "Finance",
+				"ccckey": 1517,
+				"children": [{
+					"name": "Banking",
+					"ccckey": 1412
+				}, {
+					"name": "Credit, Debt & Loans",
+					"ccckey": 1413
+				}, {
+					"name": "Finance (General)",
+					"ccckey": 1243
+				}, {
+					"name": "Financial Management & Planning",
+					"ccckey": 1411
+				}, {
+					"name": "Insurance",
+					"ccckey": 1416
+				}, {
+					"name": "International Finance",
+					"ccckey": 1414
+				}, {
+					"name": "Investment & Speculation",
+					"ccckey": 1415
+				}, {
+					"name": "Money",
+					"ccckey": 1515
+				}]
+			}, {
+				"name": "Management",
+				"ccckey": 1067,
+				"children": [{
+					"name": "Industrial Management",
+					"ccckey": 1419
+				}, {
+					"name": "Management (General)",
+					"ccckey": 1420
+				}, {
+					"name": "Management Styles & Communication",
+					"ccckey": 1418
+				}, {
+					"name": "Management Theory",
+					"ccckey": 1417
+				}]
+			}]
+		}, {
+			"name": "Economics",
+			"ccckey": 1048,
+			"children": [{
+				"name": "Agricultural Economics",
+				"ccckey": 1170
+			}, {
+				"name": "Demography",
+				"ccckey": 1212
+			}, {
+				"name": "Economic History",
+				"ccckey": 1109
+			}, {
+				"name": "Economic Theory",
+				"ccckey": 1195
+			}, {
+				"name": "Industries",
+				"ccckey": 1084
+			}, {
+				"name": "Labor & Workers' Economics",
+				"ccckey": 1110
+			}, {
+				"name": "Real Estate, Housing & Land Use",
+				"ccckey": 1082
+			}, {
+				"name": "Transportation Economics",
+				"ccckey": 1117
+			}]
+		}]
+	}, {
+		"name": "Engineering & Applied Sciences",
+		"ccckey": 1006,
+		"children": [{
+			"name": "Applied Mathematics",
+			"ccckey": 1176
+		}, {
+			"name": "Applied Physics",
+			"ccckey": 1422
+		}, {
+			"name": "Computer Science",
+			"ccckey": 1041
+		}, {
+			"name": "Engineering",
+			"ccckey": 1039,
+			"children": [{
+				"name": "Aeronautics Engineering & Astronautics",
+				"ccckey": 1172
+			}, {
+				"name": "Automotive Engineering",
+				"ccckey": 1218
+			}, {
+				"name": "Bioengineering",
+				"ccckey": 1242
+			}, {
+				"name": "Chemical Engineering",
+				"ccckey": 1155
+			}, {
+				"name": "Civil Engineering",
+				"ccckey": 1205
+			}, {
+				"name": "Electrical Engineering",
+				"ccckey": 1252
+			}, {
+				"name": "Engineering (General)",
+				"ccckey": 1562
+			}, {
+				"name": "Environmental Engineering",
+				"ccckey": 1159
+			}, {
+				"name": "Hydraulic Engineering",
+				"ccckey": 1125
+			}, {
+				"name": "Industrial & Management Engineering",
+				"ccckey": 1211
+			}, {
+				"name": "Information Technology",
+				"ccckey": 1560
+			}, {
+				"name": "Materials Science",
+				"ccckey": 1238
+			}, {
+				"name": "Mechanical Engineering",
+				"ccckey": 1237
+			}, {
+				"name": "Metallurgy & Mineralogy",
+				"ccckey": 1236
+			}, {
+				"name": "Mining Engineering",
+				"ccckey": 1214
+			}, {
+				"name": "Nuclear Engineering",
+				"ccckey": 1008
+			}, {
+				"name": "Ocean Engineering",
+				"ccckey": 1090
+			}, {
+				"name": "Operations Research",
+				"ccckey": 1147
+			}, {
+				"name": "Technology(General)",
+				"ccckey": 1140
+			}, {
+				"name": "Telecommunications",
+				"ccckey": 1423
+			}, {
+				"name": "Transportation Engineering",
+				"ccckey": 1034
+			}]
+		}]
+	}, {
+		"name": "General",
+		"ccckey": 1299,
+		"children": [{
+			"name": "Academies & Learned Societies Publications",
+			"ccckey": 1277
+		}, {
+			"name": "Almanacs, Directories & Yearbooks (General)",
+			"ccckey": 1278
+		}, {
+			"name": "Bibliography",
+			"ccckey": 1300,
+			"children": [{
+				"name": "Bibliography (General)",
+				"ccckey": 1294
+			}, {
+				"name": "Bibliography (National)",
+				"ccckey": 1295
+			}, {
+				"name": "Bibliography (Personal)",
+				"ccckey": 1297
+			}, {
+				"name": "Bibliography (Subject)",
+				"ccckey": 1296
+			}]
+		}, {
+			"name": "Collections & Series (General)",
+			"ccckey": 1270
+		}, {
+			"name": "Dictionaries (General)",
+			"ccckey": 1272
+		}, {
+			"name": "Dissertation Indexes",
+			"ccckey": 1004
+		}, {
+			"name": "Encyclopedias (General)",
+			"ccckey": 1271
+		}, {
+			"name": "History of Scholarship & Learning",
+			"ccckey": 1279
+		}, {
+			"name": "Indexes (General)",
+			"ccckey": 1273
+		}, {
+			"name": "Library Catalogs",
+			"ccckey": 1561
+		}, {
+			"name": "Museum Publications",
+			"ccckey": 1274
+		}, {
+			"name": "Newspapers (General & Popular)",
+			"ccckey": 1275
+		}, {
+			"name": "Periodicals (General & Popular)",
+			"ccckey": 1276
+		}]
+	}, {
+		"name": "Health Sciences",
+		"ccckey": 1028,
+		"children": [{
+			"name": "Biomedical Engineering",
+			"ccckey": 1142
+		}, {
+			"name": "Dentistry",
+			"ccckey": 1518,
+			"children": [{
+				"name": "Dentistry (General)",
+				"ccckey": 1175
+			}, {
+				"name": "Operative & Restorative Dentistry (Adult)",
+				"ccckey": 1311
+			}, {
+				"name": "Oral Surgery",
+				"ccckey": 1313
+			}, {
+				"name": "Orthodontics",
+				"ccckey": 1314
+			}, {
+				"name": "Periodontics & Periodontal Prosthesis",
+				"ccckey": 1312
+			}, {
+				"name": "Prosthodontics",
+				"ccckey": 1315
+			}, {
+				"name": "TMJ Diseases",
+				"ccckey": 1316
+			}]
+		}, {
+			"name": "Diet & Clinical Nutrition",
+			"ccckey": 1050
+		}, {
+			"name": "Medicine",
+			"ccckey": 1519,
+			"children": [{
+				"name": "Alternative Medicine",
+				"ccckey": 1011
+			}, {
+				"name": "Dermatology",
+				"ccckey": 1233
+			}, {
+				"name": "Gynecology & Obstetrics",
+				"ccckey": 1098
+			}, {
+				"name": "Internal Medicine",
+				"ccckey": 1520,
+				"children": [{
+					"name": "Cardiovascular Diseases",
+					"ccckey": 1324
+				}, {
+					"name": "Clinical Endocrinology",
+					"ccckey": 1323
+				}, {
+					"name": "Clinical Immunology",
+					"ccckey": 1320
+				}, {
+					"name": "Connective Tissue Diseases",
+					"ccckey": 1328
+				}, {
+					"name": "Diseases by Body Region",
+					"ccckey": 1330
+				}, {
+					"name": "Emergency Medicine",
+					"ccckey": 1317
+				}, {
+					"name": "Gastroenterology",
+					"ccckey": 1326
+				}, {
+					"name": "Geriatrics",
+					"ccckey": 1331
+				}, {
+					"name": "Hematologic Diseases",
+					"ccckey": 1322
+				}, {
+					"name": "Industrial Medicine",
+					"ccckey": 1554
+				}, {
+					"name": "Infectious Diseases",
+					"ccckey": 1318
+				}, {
+					"name": "Internal Medicine (General)",
+					"ccckey": 1026
+				}, {
+					"name": "Metabolic & Nutritional Diseases",
+					"ccckey": 1321
+				}, {
+					"name": "Military & Naval Medicine",
+					"ccckey": 1333
+				}, {
+					"name": "Musculoskeletal System Diseases",
+					"ccckey": 1329
+				}, {
+					"name": "Oncology",
+					"ccckey": 1319
+				}, {
+					"name": "Respiratory System Diseases",
+					"ccckey": 1325
+				}, {
+					"name": "Sports Medicine",
+					"ccckey": 1335
+				}, {
+					"name": "Transportation Medicine & Physiology",
+					"ccckey": 1334
+				}, {
+					"name": "Tropical & Arctic Medicine",
+					"ccckey": 1332
+				}, {
+					"name": "Urology",
+					"ccckey": 1327
+				}]
+			}, {
+				"name": "Medicine (General)",
+				"ccckey": 1193,
+				"children": [{
+					"name": "History of Medicine",
+					"ccckey": 1384
+				}, {
+					"name": "Medical & Biomedical Informatics",
+					"ccckey": 1390
+				}, {
+					"name": "Medical Education",
+					"ccckey": 1388
+				}, {
+					"name": "Medical Ethics & Philosophy",
+					"ccckey": 1386
+				}, {
+					"name": "Medical Professional Practice",
+					"ccckey": 1385
+				}, {
+					"name": "Medical Research",
+					"ccckey": 1556
+				}, {
+					"name": "Medical Technology",
+					"ccckey": 1389
+				}, {
+					"name": "Medicine (General)",
+					"ccckey": 1148
+				}, {
+					"name": "Palliative Care",
+					"ccckey": 1387
+				}]
+			}, {
+				"name": "Neurology",
+				"ccckey": 1336
+			}, {
+				"name": "Ophthalmology",
+				"ccckey": 1063
+			}, {
+				"name": "Otorhinolaryngology",
+				"ccckey": 1107
+			}, {
+				"name": "Pathology",
+				"ccckey": 1232
+			}, {
+				"name": "Pediatrics",
+				"ccckey": 1073
+			}, {
+				"name": "Psychiatry",
+				"ccckey": 1522,
+				"children": [{
+					"name": "Clinical Psychology",
+					"ccckey": 1339
+				}, {
+					"name": "Psychiatric Disorders, Individual",
+					"ccckey": 1343
+				}, {
+					"name": "Psychiatry (General)",
+					"ccckey": 1338
+				}, {
+					"name": "Psychoanalysis",
+					"ccckey": 1342
+				}, {
+					"name": "Psychopharmacotherapy",
+					"ccckey": 1341
+				}, {
+					"name": "Psychosomatic Medicine",
+					"ccckey": 1337
+				}, {
+					"name": "Psychotherapy",
+					"ccckey": 1340
+				}, {
+					"name": "Sexual Problems",
+					"ccckey": 1344
+				}, {
+					"name": "Substance Abuse Disorders",
+					"ccckey": 1345
+				}]
+			}, {
+				"name": "Radiology, MRI, Ultrasonography & Medical Physics",
+				"ccckey": 1346
+			}, {
+				"name": "Surgery & Anesthesiology",
+				"ccckey": 1523,
+				"children": [{
+					"name": "Anesthesiology",
+					"ccckey": 1347
+				}, {
+					"name": "Plastic Surgery",
+					"ccckey": 1349
+				}, {
+					"name": "Prosthesis & Artificial Organs",
+					"ccckey": 1557
+				}, {
+					"name": "Surgery (General and By Type)",
+					"ccckey": 1042
+				}, {
+					"name": "Transplantation of Organs & Tissues",
+					"ccckey": 1350
+				}, {
+					"name": "Wounds & Injuries",
+					"ccckey": 1348
+				}]
+			}]
+		}, {
+			"name": "Nursing",
+			"ccckey": 1020
+		}, {
+			"name": "Occupational Therapy & Rehabilitation",
+			"ccckey": 1353
+		}, {
+			"name": "Pharmacy, Therapeutics, & Pharmacology",
+			"ccckey": 1095
+		}, {
+			"name": "Physical Therapy",
+			"ccckey": 1383
+		}, {
+			"name": "Public Health",
+			"ccckey": 1524,
+			"children": [{
+				"name": "Accidents & Public Health",
+				"ccckey": 1355
+			}, {
+				"name": "Adolescent & Adult Public Health",
+				"ccckey": 1356
+			}, {
+				"name": "Aged Public Health",
+				"ccckey": 1357
+			}, {
+				"name": "Communicable Diseases",
+				"ccckey": 1359
+			}, {
+				"name": "Consumer Health",
+				"ccckey": 1558
+			}, {
+				"name": "Emergency Medical Services",
+				"ccckey": 1360
+			}, {
+				"name": "Environmnetal Health",
+				"ccckey": 1361
+			}, {
+				"name": "Epidemiology & Epidemics",
+				"ccckey": 1362
+			}, {
+				"name": "Ethnic Minorities & Public Health",
+				"ccckey": 1363
+			}, {
+				"name": "Foodborne Diseases",
+				"ccckey": 1364
+			}, {
+				"name": "Gender Specific Public Health",
+				"ccckey": 1365
+			}, {
+				"name": "Government Health Agencies, U.S.",
+				"ccckey": 1366
+			}, {
+				"name": "Home Health Care Services",
+				"ccckey": 1367
+			}, {
+				"name": "Hospitals & Medical Centers",
+				"ccckey": 1368
+			}, {
+				"name": "Housing, Household & Public Health",
+				"ccckey": 1369
+			}, {
+				"name": "Legal & Forensic Medicine",
+				"ccckey": 1370
+			}, {
+				"name": "Long-Term Care Facilities",
+				"ccckey": 1371
+			}, {
+				"name": "Medical Care Plans",
+				"ccckey": 1372
+			}, {
+				"name": "Medical Economics",
+				"ccckey": 1373
+			}, {
+				"name": "Medical Geography",
+				"ccckey": 1374
+			}, {
+				"name": "Medical Statistics",
+				"ccckey": 1375
+			}, {
+				"name": "Mental Illness Prevention",
+				"ccckey": 1376
+			}, {
+				"name": "Public Health (General)",
+				"ccckey": 1054
+			}, {
+				"name": "Regulation of Health Care",
+				"ccckey": 1377
+			}, {
+				"name": "Social Medicine",
+				"ccckey": 1378
+			}, {
+				"name": "Toxicology & Public Health",
+				"ccckey": 1379
+			}, {
+				"name": "Transmission of Disease",
+				"ccckey": 1380
+			}, {
+				"name": "War & Public Health",
+				"ccckey": 1382
+			}, {
+				"name": "World Health",
+				"ccckey": 1381
+			}]
+		}, {
+			"name": "Veterinary Medicine",
+			"ccckey": 1354
+		}]
+	}, {
+		"name": "History & Archaeology",
+		"ccckey": 1183,
+		"children": [{
+			"name": "Archaeology",
+			"ccckey": 1031
+		}, {
+			"name": "Biography (General)",
+			"ccckey": 1027
+		}, {
+			"name": "History (General)",
+			"ccckey": 1131
+		}, {
+			"name": "Regions & Countries",
+			"ccckey": 1301,
+			"children": [{
+				"name": "Africa",
+				"ccckey": 1071
+			}, {
+				"name": "Americas",
+				"ccckey": 1302,
+				"children": [{
+					"name": "Americas (General)",
+					"ccckey": 1144
+				}, {
+					"name": "Canada",
+					"ccckey": 1187
+				}, {
+					"name": "Latin America",
+					"ccckey": 1287
+				}, {
+					"name": "Mexico",
+					"ccckey": 1077
+				}, {
+					"name": "United States (General)",
+					"ccckey": 1121
+				}, {
+					"name": "United States Ethnic Groups",
+					"ccckey": 1286
+				}, {
+					"name": "United States Local History",
+					"ccckey": 1009
+				}]
+			}, {
+				"name": "Asia & the Middle East",
+				"ccckey": 1303,
+				"children": [{
+					"name": "East Asia",
+					"ccckey": 1284
+				}, {
+					"name": "Middle East",
+					"ccckey": 1087
+				}, {
+					"name": "South Asia",
+					"ccckey": 1283
+				}, {
+					"name": "Southeast Asia",
+					"ccckey": 1285
+				}]
+			}, {
+				"name": "Australia & Pacific Islands (Oceania)",
+				"ccckey": 1003
+			}, {
+				"name": "Europe",
+				"ccckey": 1304,
+				"children": [{
+					"name": "Austria",
+					"ccckey": 1012
+				}, {
+					"name": "Balkan Peninsula",
+					"ccckey": 1158
+				}, {
+					"name": "Central Europe",
+					"ccckey": 1069
+				}, {
+					"name": "Eastern Europe",
+					"ccckey": 1257
+				}, {
+					"name": "Europe (General)",
+					"ccckey": 1280
+				}, {
+					"name": "France",
+					"ccckey": 1234
+				}, {
+					"name": "Germany",
+					"ccckey": 1137
+				}, {
+					"name": "Great Britain",
+					"ccckey": 1189
+				}, {
+					"name": "Greece",
+					"ccckey": 1105
+				}, {
+					"name": "Ireland",
+					"ccckey": 1281
+				}, {
+					"name": "Italy",
+					"ccckey": 1005
+				}, {
+					"name": "Mediterranean Region & Greco-Roman World",
+					"ccckey": 1157
+				}, {
+					"name": "Netherlands, Belgium & Luxembourg",
+					"ccckey": 1114
+				}, {
+					"name": "Northern Europe & Scandinavia",
+					"ccckey": 1206
+				}, {
+					"name": "Russia & Former Soviet Republics",
+					"ccckey": 1171
+				}, {
+					"name": "Spain & Portugal",
+					"ccckey": 1061
+				}, {
+					"name": "Switzerland",
+					"ccckey": 1180
+				}]
+			}]
+		}, {
+			"name": "Related Historical Sciences",
+			"ccckey": 1135,
+			"children": [{
+				"name": "Archives, Ancient Documents & Seals",
+				"ccckey": 1017
+			}, {
+				"name": "Calendars & Chronologies",
+				"ccckey": 1197
+			}, {
+				"name": "Genealogy",
+				"ccckey": 1217
+			}, {
+				"name": "Heraldry",
+				"ccckey": 1164
+			}, {
+				"name": "Numismatics",
+				"ccckey": 1240
+			}]
+		}]
+	}, {
+		"name": "Journalism & Communications",
+		"ccckey": 1055,
+		"children": [{
+			"name": "Communication & Mass Media",
+			"ccckey": 1247
+		}, {
+			"name": "Freedom of the Press & Censorship",
+			"ccckey": 1239
+		}, {
+			"name": "Journalism",
+			"ccckey": 1123
+		}, {
+			"name": "Military Public Relations & War Reporting",
+			"ccckey": 1192
+		}, {
+			"name": "Radio & TV Broadcasting",
+			"ccckey": 1145
+		}]
+	}, {
+		"name": "Languages & Literatures",
+		"ccckey": 1186,
+		"children": [{
+			"name": "African Languages & Literatures",
+			"ccckey": 1167
+		}, {
+			"name": "Austronesian, Papuan & Australian Languages & Literatures",
+			"ccckey": 1268
+		}, {
+			"name": "Celtic Languages & Literatures",
+			"ccckey": 1174
+		}, {
+			"name": "East Asian Languages & Literatures",
+			"ccckey": 1267
+		}, {
+			"name": "English",
+			"ccckey": 1305,
+			"children": [{
+				"name": "American Literature",
+				"ccckey": 1203
+			}, {
+				"name": "English Language",
+				"ccckey": 1154
+			}, {
+				"name": "English Literature",
+				"ccckey": 1130
+			}]
+		}, {
+			"name": "Germanic Languages",
+			"ccckey": 1074
+		}, {
+			"name": "Germanic Literature",
+			"ccckey": 1179
+		}, {
+			"name": "Greek & Latin Languages & Literatures",
+			"ccckey": 1093
+		}, {
+			"name": "Indo-Iranian Languages & Literatures",
+			"ccckey": 1266
+		}, {
+			"name": "Literature (General)",
+			"ccckey": 1115
+		}, {
+			"name": "Middle Eastern Languages & Literatures",
+			"ccckey": 1265
+		}, {
+			"name": "Native American & Hyperborean Languages",
+			"ccckey": 1188
+		}, {
+			"name": "Philology & Linguistics",
+			"ccckey": 1101
+		}, {
+			"name": "Romance Languages",
+			"ccckey": 1235
+		}, {
+			"name": "Romance Literatures",
+			"ccckey": 1133,
+			"children": [{
+				"name": "French Literature",
+				"ccckey": 1307
+			}, {
+				"name": "Italian Literature",
+				"ccckey": 1308
+			}, {
+				"name": "Portugese Literature",
+				"ccckey": 1310
+			}, {
+				"name": "Spanish Literature",
+				"ccckey": 1309
+			}]
+		}, {
+			"name": "Slavic, Baltic and Albanian Languages & Literatures",
+			"ccckey": 1226
+		}, {
+			"name": "Ural-Altaic Languages & Literatures",
+			"ccckey": 1569
+		}, {
+			"name": "Uralic and Basque Languages & Literatures",
+			"ccckey": 1160
+		}, {
+			"name": "Western European Languages (General)",
+			"ccckey": 1559
+		}]
+	}, {
+		"name": "Law, Politics & Government",
+		"ccckey": 1056,
+		"children": [{
+			"name": "Government (General)",
+			"ccckey": 1525,
+			"children": [{
+				"name": "Government Documents & Papers",
+				"ccckey": 1066
+			}, {
+				"name": "Political Institutions & Public Administration (General)",
+				"ccckey": 1246
+			}]
+		}, {
+			"name": "Government (Non-U.S.)",
+			"ccckey": 1526,
+			"children": [{
+				"name": "Government (Asia)",
+				"ccckey": 1024
+			}, {
+				"name": "Government (Canada)",
+				"ccckey": 1549
+			}, {
+				"name": "Government (Central & South America)",
+				"ccckey": 1550
+			}, {
+				"name": "Government (Europe)",
+				"ccckey": 1207
+			}, {
+				"name": "Government (Mexico)",
+				"ccckey": 1551
+			}]
+		}, {
+			"name": "Government (U.S.)",
+			"ccckey": 1527,
+			"children": [{
+				"name": "Local Government (U.S.)",
+				"ccckey": 1213
+			}, {
+				"name": "Political Institutions & Public Administration (U.S), Executive Branch)",
+"ccckey": 1043
+			}, {
+				"name": "Political Institutions & Public Administration (U.S.), General)",
+"ccckey": 1222
+			}, {
+				"name": "Political Institutions & Public Administration (U.S.), Legislative Branch)",
+"ccckey": 1508
+			}, {
+				"name": "Political Rights (U.S.)",
+				"ccckey": 1509
+			}, {
+				"name": "State Government (U.S.)",
+				"ccckey": 1510
+			}]
+		}, {
+			"name": "International Relations",
+			"ccckey": 1249
+		}, {
+			"name": "Law",
+			"ccckey": 1528,
+			"children": [{
+				"name": "Canon Law",
+				"ccckey": 1477
+			}, {
+				"name": "Human Rights",
+				"ccckey": 1555
+			}, {
+				"name": "International Law",
+				"ccckey": 1529,
+				"children": [{
+					"name": "International Cooperation",
+					"ccckey": 1474
+				}, {
+					"name": "International Law (General)",
+					"ccckey": 1161
+				}, {
+					"name": "Law of Outer Space",
+					"ccckey": 1573
+				}, {
+					"name": "Law of the Sea",
+					"ccckey": 1572
+				}, {
+					"name": "Treaties, International",
+					"ccckey": 1475
+				}]
+			}, {
+				"name": "Law (Non-U.S.)",
+				"ccckey": 1530,
+				"children": [{
+					"name": "Law ( Americas, Latin America & West Indies)",
+					"ccckey": 1478
+				}, {
+					"name": "Law (Africa, Asia, Pacific & Antarctica)",
+					"ccckey": 1500
+				}, {
+					"name": "Law (Canada)",
+					"ccckey": 1479
+				}, {
+					"name": "Law (Europe, except U.K.)",
+					"ccckey": 1499
+				}, {
+					"name": "Law (Latin America)",
+					"ccckey": 1571
+				}, {
+					"name": "Law (South America)",
+					"ccckey": 1570
+				}, {
+					"name": "Law, English",
+					"ccckey": 1476
+				}]
+			}, {
+				"name": "Law (U.S.)",
+				"ccckey": 1531,
+				"children": [{
+					"name": "Constitutional Law (U.S.)",
+					"ccckey": 1491
+				}, {
+					"name": "Criminal Law & Procedure (U.S.)",
+					"ccckey": 1495
+				}, {
+					"name": "Disabled Legislation (U.S.)",
+					"ccckey": 1481
+				}, {
+					"name": "Fetus Legislation (U.S.)",
+					"ccckey": 1482
+				}, {
+					"name": "Food, Drug & Cosmetics Legislation (U.S.)",
+					"ccckey": 1490
+				}, {
+					"name": "Health Insurance and Medicare Legislation (U.S.)",
+					"ccckey": 1483
+				}, {
+					"name": "Health Professions Legislation (U.S.)",
+					"ccckey": 1484
+				}, {
+					"name": "Human Reproduction Legislation (U.S.)",
+					"ccckey": 1487
+				}, {
+					"name": "Intellectual Property Law (U.S.)",
+					"ccckey": 1485
+				}, {
+					"name": "Labor Law (U.S.)",
+					"ccckey": 1486
+				}, {
+					"name": "Law (N.Y. State)",
+					"ccckey": 1552
+				}, {
+					"name": "Law (New York City)",
+					"ccckey": 1553
+				}, {
+					"name": "Law (U.S.), General",
+					"ccckey": 1480
+				}, {
+					"name": "Law (U.S.), Local (except NYC)",
+					"ccckey": 1497
+				}, {
+					"name": "Law of the U.S. States (except N.Y.)",
+					"ccckey": 1496
+				}, {
+					"name": "Laws of U.S. Confederate States & Territories",
+					"ccckey": 1498
+				}, {
+					"name": "Medical & Hospital Legislation (U.S.)",
+					"ccckey": 1489
+				}, {
+					"name": "Military Law (U.S.)",
+					"ccckey": 1494
+				}, {
+					"name": "Public Finance Laws (U.S.)",
+					"ccckey": 1493
+				}, {
+					"name": "Public Health Legislation (U.S.)",
+					"ccckey": 1488
+				}, {
+					"name": "Public Property Laws (U.S.)",
+					"ccckey": 1492
+				}]
+			}, {
+				"name": "Law, General & Comparative",
+				"ccckey": 1045
+			}]
+		}, {
+			"name": "Military & Naval Science",
+			"ccckey": 1532,
+			"children": [{
+				"name": "Air Forces",
+				"ccckey": 1504
+			}, {
+				"name": "Armies",
+				"ccckey": 1501
+			}, {
+				"name": "Marines",
+				"ccckey": 1505
+			}, {
+				"name": "Military Administration",
+				"ccckey": 1502
+			}, {
+				"name": "Military Engineering",
+				"ccckey": 1503
+			}, {
+				"name": "Military Science (General)",
+				"ccckey": 1099
+			}, {
+				"name": "Naval Architecture",
+				"ccckey": 1507
+			}, {
+				"name": "Naval Science (General)",
+				"ccckey": 1224
+			}, {
+				"name": "Navigation",
+				"ccckey": 1506
+			}]
+		}, {
+			"name": "Political Science",
+			"ccckey": 1223,
+			"children": [{
+				"name": "Colonialism & Postcolonialism",
+				"ccckey": 1058
+			}, {
+				"name": "Immigration & Emigration",
+				"ccckey": 1473
+			}, {
+				"name": "Political Science (General)",
+				"ccckey": 1169
+			}, {
+				"name": "Political Science History",
+				"ccckey": 1512
+			}, {
+				"name": "Political Science Study & Teaching",
+				"ccckey": 1513
+			}, {
+				"name": "Political Science Theory",
+				"ccckey": 1511
+			}, {
+				"name": "Political Theory of the State",
+				"ccckey": 1018
+			}, {
+				"name": "Public Finance",
+				"ccckey": 1108
+			}, {
+				"name": "Socialism, Communism & Anarchism",
+				"ccckey": 1102
+			}]
+		}]
+	}, {
+		"name": "Music, Dance, Drama & Film",
+		"ccckey": 1231,
+		"children": [{
+			"name": "Dance",
+			"ccckey": 1029
+		}, {
+			"name": "Drama",
+			"ccckey": 1051
+		}, {
+			"name": "Film",
+			"ccckey": 1106
+		}, {
+			"name": "Music",
+			"ccckey": 1035,
+			"children": [{
+				"name": "Composers",
+				"ccckey": 1396
+			}, {
+				"name": "Ethnomusicology",
+				"ccckey": 1403
+			}, {
+				"name": "Music History & Criticism, Dance Music",
+				"ccckey": 1399
+			}, {
+				"name": "Music History & Criticism, General",
+				"ccckey": 1395
+			}, {
+				"name": "Music History & Criticism, Instrumental",
+				"ccckey": 1397
+			}, {
+				"name": "Music History & Criticism, National (Folk, Patriotic, Political)",
+				"ccckey": 1401
+			}, {
+				"name": "Music History & Criticism, Popular (Jazz, Rock, etc.)",
+				"ccckey": 1400
+			}, {
+				"name": "Music History & Criticism, Vocal",
+				"ccckey": 1398
+			}, {
+				"name": "Music Instruction & Study",
+				"ccckey": 1153
+			}, {
+				"name": "Music Literature",
+				"ccckey": 1156
+			}, {
+				"name": "Music Philosophy",
+				"ccckey": 1402
+			}, {
+				"name": "Printed Music, Instrumental",
+				"ccckey": 1210
+			}, {
+				"name": "Printed Music, Vocal",
+				"ccckey": 1394
+			}]
+		}]
+	}, {
+		"name": "Philosophy & Religion",
+		"ccckey": 1001,
+		"children": [{
+			"name": "Philosophy",
+			"ccckey": 1221,
+			"children": [{
+				"name": "Aesthetics",
+				"ccckey": 1143
+			}, {
+				"name": "Ethics",
+				"ccckey": 1013
+			}, {
+				"name": "Logic",
+				"ccckey": 1120
+			}, {
+				"name": "Speculative Philosophy",
+				"ccckey": 1151
+			}]
+		}, {
+			"name": "Religion",
+			"ccckey": 1534,
+			"children": [{
+				"name": "African Religions",
+				"ccckey": 1198
+			}, {
+				"name": "Ancient Near Eastern Religions",
+				"ccckey": 1230
+			}, {
+				"name": "Buddhism",
+				"ccckey": 1086
+			}, {
+				"name": "Christianity",
+				"ccckey": 1023
+			}, {
+				"name": "European Religions (pre-Christian)",
+				"ccckey": 1053
+			}, {
+				"name": "Hinduism",
+				"ccckey": 1163
+			}, {
+				"name": "Islam",
+				"ccckey": 1178
+			}, {
+				"name": "Jainism",
+				"ccckey": 1072
+			}, {
+				"name": "Judaism",
+				"ccckey": 1057
+			}, {
+				"name": "Mythology, Comparative",
+				"ccckey": 1104
+			}, {
+				"name": "North & South American Religions",
+				"ccckey": 1258
+			}, {
+				"name": "Oceania Religions",
+				"ccckey": 1259
+			}, {
+				"name": "Rationalism",
+				"ccckey": 1132
+			}, {
+				"name": "Religion (General)",
+				"ccckey": 1092
+			}]
+		}]
+	}, {
+		"name": "Sciences",
+		"ccckey": 1535,
+		"children": [{
+			"name": "Agriculture",
+			"ccckey": 1536,
+			"children": [{
+				"name": "Agriculture (General)",
+				"ccckey": 1194
+			}, {
+				"name": "Animal Sciences",
+				"ccckey": 1200
+			}, {
+				"name": "Plant Sciences",
+				"ccckey": 1244
+			}]
+		}, {
+			"name": "Astronomy & Astrophysics",
+			"ccckey": 1538,
+			"children": [{
+				"name": "Astronomical Observatories & Instruments",
+				"ccckey": 1440
+			}, {
+				"name": "Astronomy (General)",
+				"ccckey": 1255
+			}, {
+				"name": "Astrophysics",
+				"ccckey": 1441
+			}, {
+				"name": "Practical & Spherical Astronomy",
+				"ccckey": 1443
+			}, {
+				"name": "Theoretical Astronomy",
+				"ccckey": 1442
+			}]
+		}, {
+			"name": "Biology",
+			"ccckey": 1539,
+			"children": [{
+				"name": "Biology (General)",
+				"ccckey": 1228
+			}, {
+				"name": "Biophysics",
+				"ccckey": 1119
+			}, {
+				"name": "Cytology",
+				"ccckey": 1444
+			}, {
+				"name": "Economic Biology",
+				"ccckey": 1445
+			}, {
+				"name": "Evolution",
+				"ccckey": 1446
+			}, {
+				"name": "Genetics",
+				"ccckey": 1447
+			}, {
+				"name": "Microbiology & Immunology",
+				"ccckey": 1068
+			}, {
+				"name": "Microscopy",
+				"ccckey": 1448
+			}]
+		}, {
+			"name": "Botany",
+			"ccckey": 1540,
+			"children": [{
+				"name": "Botany (General)",
+				"ccckey": 1040
+			}, {
+				"name": "Fungi & Algae",
+				"ccckey": 1449
+			}, {
+				"name": "Plant Anatomy",
+				"ccckey": 1450
+			}, {
+				"name": "Plant Ecology",
+				"ccckey": 1451
+			}, {
+				"name": "Plant Geography",
+				"ccckey": 1452
+			}, {
+				"name": "Plant Physiology",
+				"ccckey": 1453
+			}]
+		}, {
+			"name": "Chemistry",
+			"ccckey": 1541,
+			"children": [{
+				"name": "Analytical Chemistry",
+				"ccckey": 1038
+			}, {
+				"name": "Biochemistry",
+				"ccckey": 1191
+			}, {
+				"name": "Chemistry (General)",
+				"ccckey": 1097
+			}, {
+				"name": "Crystallography",
+				"ccckey": 1229
+			}, {
+				"name": "Inorganic Chemistry",
+				"ccckey": 1209
+			}, {
+				"name": "Organic Chemistry",
+				"ccckey": 1064
+			}, {
+				"name": "Photochemistry",
+				"ccckey": 1128
+			}, {
+				"name": "Physical & Theoretical Chemistry",
+				"ccckey": 1136
+			}, {
+				"name": "Radiation Chemistry",
+				"ccckey": 1245
+			}]
+		}, {
+			"name": "Ecology",
+			"ccckey": 1015
+		}, {
+			"name": "Environmental Sciences",
+			"ccckey": 1138
+		}, {
+			"name": "Forestry",
+			"ccckey": 1202
+		}, {
+			"name": "Geology",
+			"ccckey": 1542,
+			"children": [{
+				"name": "Dynamic & Strcutural Geology",
+				"ccckey": 1433
+			}, {
+				"name": "Geology (General)",
+				"ccckey": 1227
+			}, {
+				"name": "Mineralogy",
+				"ccckey": 1435
+			}, {
+				"name": "Paleobotany",
+				"ccckey": 1434
+			}, {
+				"name": "Paleontology",
+				"ccckey": 1436
+			}, {
+				"name": "Paleozoology",
+				"ccckey": 1437
+			}, {
+				"name": "Petrology",
+				"ccckey": 1438
+			}, {
+				"name": "Stratigraphy",
+				"ccckey": 1439
+			}]
+		}, {
+			"name": "Human Anatomy & Physiology",
+			"ccckey": 1081,
+			"children": [{
+				"name": "Anatomy",
+				"ccckey": 1134
+			}, {
+				"name": "Animal Biochemistry",
+				"ccckey": 1454
+			}, {
+				"name": "Neuroscience",
+				"ccckey": 1065
+			}, {
+				"name": "Physiology",
+				"ccckey": 1059
+			}]
+		}, {
+			"name": "Mathematics",
+			"ccckey": 1543,
+			"children": [{
+				"name": "Algebra",
+				"ccckey": 1421
+			}, {
+				"name": "Calculus",
+				"ccckey": 1455
+			}, {
+				"name": "Elementary Mathematics & Arithmetic",
+				"ccckey": 1456
+			}, {
+				"name": "Geometry",
+				"ccckey": 1457
+			}, {
+				"name": "Mathematical Statistics",
+				"ccckey": 1052
+			}, {
+				"name": "Mathematical Theory",
+				"ccckey": 1458
+			}, {
+				"name": "Mathematics (General)",
+				"ccckey": 1111
+			}, {
+				"name": "Mathematics Teaching & Research",
+				"ccckey": 1459
+			}]
+		}, {
+			"name": "Meteorology & Climatology",
+			"ccckey": 1254
+		}, {
+			"name": "Oceanography",
+			"ccckey": 1182
+		}, {
+			"name": "Physics",
+			"ccckey": 1544,
+			"children": [{
+				"name": "Acoustics & Sound",
+				"ccckey": 1460
+			}, {
+				"name": "Atomic Physics",
+				"ccckey": 1461
+			}, {
+				"name": "Cosmic Physics",
+				"ccckey": 1462
+			}, {
+				"name": "Electricity & Magnetism",
+				"ccckey": 1463
+			}, {
+				"name": "Geomagnetism",
+				"ccckey": 1568
+			}, {
+				"name": "Light & Optics",
+				"ccckey": 1464
+			}, {
+				"name": "Nuclear Physics",
+				"ccckey": 1465
+			}, {
+				"name": "Physics (General)",
+				"ccckey": 1139
+			}, {
+				"name": "Thermodynamics",
+				"ccckey": 1466
+			}, {
+				"name": "Weights & Measures",
+				"ccckey": 1467
+			}]
+		}, {
+			"name": "Sciences (General)",
+			"ccckey": 1173
+		}, {
+			"name": "Zoology",
+			"ccckey": 1545,
+			"children": [{
+				"name": "Animal Anatomy & Embryology",
+				"ccckey": 1468
+			}, {
+				"name": "Animal Behavior",
+				"ccckey": 1469
+			}, {
+				"name": "Animal Geography",
+				"ccckey": 1470
+			}, {
+				"name": "Invertebrates & Protozoa",
+				"ccckey": 1471
+			}, {
+				"name": "Vetebrates",
+				"ccckey": 1472
+			}, {
+				"name": "Zoology (General)",
+				"ccckey": 1126
+			}]
+		}]
+	}, {
+		"name": "Social Sciences",
+		"ccckey": 1089,
+		"children": [{
+			"name": "Anthropology",
+			"ccckey": 1078,
+			"children": [{
+				"name": "Anthropogeography & Human Ecology",
+				"ccckey": 1216
+			}, {
+				"name": "Anthropology (General)",
+				"ccckey": 1424
+			}, {
+				"name": "Ethnology",
+				"ccckey": 1264
+			}, {
+				"name": "Folklore",
+				"ccckey": 1261
+			}, {
+				"name": "Manners & Customs",
+				"ccckey": 1260
+			}, {
+				"name": "Physical Anthropology",
+				"ccckey": 1262
+			}, {
+				"name": "Prehistoric Anthropology",
+				"ccckey": 1263
+			}]
+		}, {
+			"name": "Education",
+			"ccckey": 1177,
+			"children": [{
+				"name": "Book Studies & Arts",
+				"ccckey": 1070
+			}, {
+				"name": "College & School Publications",
+				"ccckey": 1025
+			}, {
+				"name": "Education (General)",
+				"ccckey": 1046
+			}, {
+				"name": "Education, Special Topics",
+				"ccckey": 1122
+			}, {
+				"name": "Educational Institutions",
+				"ccckey": 1149
+			}, {
+				"name": "History of Education",
+				"ccckey": 1021
+			}, {
+				"name": "Student Fraternities & Societies (U.S.)",
+				"ccckey": 1010
+			}, {
+				"name": "Textbooks",
+				"ccckey": 1060
+			}, {
+				"name": "Theory & Practice of Education",
+				"ccckey": 1019
+			}]
+		}, {
+			"name": "Geography",
+			"ccckey": 1546,
+			"children": [{
+				"name": "Atlases & Maps",
+				"ccckey": 1208
+			}, {
+				"name": "Cartography",
+				"ccckey": 1165
+			}, {
+				"name": "Physical Geography",
+				"ccckey": 1185
+			}]
+		}, {
+			"name": "Library & Information Science",
+			"ccckey": 1141
+		}, {
+			"name": "Parapsychology & Occult Sciences",
+			"ccckey": 1007
+		}, {
+			"name": "Psychology",
+			"ccckey": 1253
+		}, {
+			"name": "Recreation & Sports",
+			"ccckey": 1100
+		}, {
+			"name": "Social Sciences (General)",
+			"ccckey": 1124
+		}, {
+			"name": "Social Welfare & Social Work",
+			"ccckey": 1306,
+			"children": [{
+				"name": "Child & Youth Development",
+				"ccckey": 1288
+			}, {
+				"name": "Criminology, Penology & Juvenile Delinquency",
+				"ccckey": 1113
+			}, {
+				"name": "Disabilities",
+				"ccckey": 1291
+			}, {
+				"name": "Family Violence",
+				"ccckey": 1293
+			}, {
+				"name": "Gerontology",
+				"ccckey": 1289
+			}, {
+				"name": "Social Welfare & Social Work (General)",
+				"ccckey": 1002
+			}, {
+				"name": "Substance Abuse",
+				"ccckey": 1292
+			}]
+		}, {
+			"name": "Sociology & Social History",
+			"ccckey": 1547,
+			"children": [{
+				"name": "Communities",
+				"ccckey": 1548,
+				"children": [{
+					"name": "Communities (General)",
+					"ccckey": 1428
+				}, {
+					"name": "Races",
+					"ccckey": 1432
+				}, {
+					"name": "Rural Groups",
+					"ccckey": 1430
+				}, {
+					"name": "Social Classes",
+					"ccckey": 1431
+				}, {
+					"name": "Urban Groups",
+					"ccckey": 1429
+				}]
+			}, {
+				"name": "Family, Marriage & Sex Roles",
+				"ccckey": 1250
+			}, {
+				"name": "Social Change",
+				"ccckey": 1425
+			}, {
+				"name": "Social Conditions",
+				"ccckey": 1426
+			}, {
+				"name": "Societies & Clubs",
+				"ccckey": 1427
+			}]
+		}, {
+			"name": "Statistics (General)",
+			"ccckey": 1199
+		}, {
+			"name": "Women's Studies",
+			"ccckey": 1290
+		}]
+	}]
+}

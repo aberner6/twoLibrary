@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<title></title>
+<meta charset="utf-8">
+<script src="js/d3.v3.min.js"></script>
+<script src="js/queue.v1.min.js"></script>
+<script src="js/jquery-latest.js"></script>
+<style>
+ @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+
+body {
+  font-family: "Gotham-Light", sans-serif;
+    font-weight:100;
+   height: 100%;
+    overflow: auto;
+    /*letter-spacing: 1pt;*/
+    text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;  
+  background-color: white;
+  color: rgba(65, 63, 63, 1);
+}
+@font-face {
+    font-family: 'Gotham-Light';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Gotham-Light'), local('Gotham-Light'), url(Gotham-Light.otf) format('truetype');
+}
+
+.centered {
+        margin: 0 auto;
+        width: 800px;
+}
+
+.title {
+width: 840px;
+height: 54px;
+/*padding-top: 70px;*/
+padding-bottom: 10px;
+text-align: left;
+}
+  .header { 
+    float:left; 
+    height: 54px; 
+    width: 450px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .header h1 {
+    color: #777;
+
+    font-size: 20px;
+    line-height:25px;
+    font-weight: 400;
+  }
+  .buttons { 
+float: right;
+position: absolute;
+width: 370px;
+text-align: right;
+  }
+  .button {
+display: inline-block;
+padding: 6px;
+margin: 13px 0px;
+background-color: white;
+border: 1px solid rgba(170, 165, 165, 1);
+color: #666;
+font-size: 11px;
+font-weight: 300;
+line-height: 12px;
+/* text-shadow: 1px 1px 0 rgba(0,0,0,0.3); */
+text-align: center;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+/* -webkit-box-shadow: inset 0px 0px 15px 5px #111; */
+/* box-shadow: inset 0px 0px 15px 5px white; */
+cursor: pointer;
+
+/*    display: inline-block;
+    padding: 6px;
+    margin: 13px 0px;
+    background-color: #222;
+    border:1px solid #333;
+
+    color: #666;
+    font-size: 11px;
+    font-weight:300;
+    line-height:12px;
+
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3); 
+    text-align: center; 
+
+    -webkit-border-radius: 4px; 
+    -moz-border-radius:    4px;
+    border-radius:         4px;
+
+    -webkit-box-shadow: inset 0px 0px 15px 5px #111;
+    box-shadow: inset 0px 0px 15px 5px #111;
+
+    cursor: pointer;*/
+  }
+  .button:hover{
+    color: white;
+    border:1px solid rgba(65, 63, 63, 1); 
+    background-color: rgba(65, 63, 63, 1);
+  }
+
+.tooltip {
+/*  position: absolute;
+  background-color:rgba(80, 80, 80, 1);
+  border: solid 1px #222;
+
+  padding: 10px;
+  color: #666;
+  
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 18px;
+  
+  opacity: 0;
+  display:none;
+
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .1);
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);*/
+position: absolute;
+background-color: rgba(194, 194, 194, 1);
+border: 1px solid rgba(170, 165, 165, 1);
+padding: 10px;
+color: #222;
+font-size: 10px;
+font-weight: 300;
+line-height: 18px;
+opacity: 0;
+display: none;
+-webkit-box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .1);
+box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);
+}
+  .tooltip span { 
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 15px;
+    color: white; 
+  }
+
+.svg_container {
+  position:relative;
+  width:100%;
+  height:800px;
+}
+  svg .graphic { opacity: 0; }
+    .label {
+      fill:rgba(65, 63, 63, 1);
+      /*fill: #999;*/
+      font-size: 10px;
+    }
+    .root {
+      fill: none;
+      stroke-width:1px;
+    }
+    .branch {
+      fill: none;
+      stroke: #FFF;
+      stroke-width: 1px;
+    }
+    .leaf { }
+      .leaf circle {
+        fill: #CCC; 
+        opacity: .8;
+      }
+      .leaf circle:hover {
+        opacity:.9;
+        stroke: white;
+      }
+</style>
+
+<body>
+  <div class="centered">
+    <div class="title">
+      <div class="header"><h1></h1></div>
+      <span class="buttons">
+        <div class="button" id="summed_holdings">Total holdings</div>
+        <div class="button" id="summed_circulations">Total circulations</div>
+        <div class="button" id="summed_circ_per_hold">Relative activity</div>
+      </span>
+    </div>
+
+    <div class="svg_container"></div>
+    
+    <div class="tooltip">
+        <span id="hilcc-name"></span><br>
+        Holdings:<br>
+        <span id="hilcc-holdings"></span><br>
+        Circulations:<br>
+        <span id="hilcc-circulations"></span><br>
+        Avg. circulations per book:<br>
+        <span id="hilcc-circ_per_hold"></span>
+    </div>
+  </div>
+</body>
+
+<script>
+
+var marc = {
+  // basic variables
+  v: {
+    // dimensions of svg
+    width: 800,
+    height: 750,
+    // category colors, in order
+    colors: { 
+      base: ["#3C4EB4","#513091","#612673",
+             "#7A2939","#8E372F","#8A5C2E",
+             "#8E7B2F","#848E2F","#5F8A2E",
+             "#2E8A3C","#2E848A","#2D6886","#2D4786"],
+      // lighter colors will be calculated based on the base colors
+      lighter: []
+    },
+    // maximum radius for node circles
+    maxradius: 12,
+    // speed of tree transitions
+    transitions_length: 1000
+  },
+  // Various types of data - raw from json/csv and summaries
+  data: {
+    // populated with per-key subject counts when holdings/circulations csv file is read in
+    subject_counts: {},
+    // holds HILCC subject heirarchy; used to generate SVG tree data structure
+    hilcc: {},
+    // maximum values, calculated in R then tweaked manually for convenience. Used to properly scale other values;
+    // Alternatively, could calculate in D3 - this would be more accurate for summed displays 
+    max: {
+      circulations: 150689,
+      holdings: 149961,
+      // holdings: 1000000,
+      circ_per_hold: 15
+    },
+    // Will hold the SVG tree data structure, as created by d3's layout functions
+    tree: {
+      links: null,
+      nodes: null,
+      roots: [] 
+    },
+    // Names for root categories - used to relate colors to categories within the data.
+    // Could calculate these on the fly as well; this method is susceptible to breaking
+    // due to changes/typos in the data...
+    root_names: [ "Arts, Architecture & Applied Arts",
+                  "Business & Economics",
+                  "Engineering & Applied Sciences",
+                  "General",
+                  "Health Sciences",
+                  "History & Archaeology",
+                  "Journalism & Communications",
+                  "Languages & Literatures",
+                  "Law, Politics & Government",
+                  "Music, Dance, Drama & Film",
+                  "Philosophy & Religion",
+                  "Sciences",
+                  "Social Sciences" ]
+  },
+
+  // d3 parameters and behaviors
+  params: {
+    // Tree layout generator (creates data structure that will be fed to marc.params.path)
+    tree: d3.layout.tree(),
+    // Path generator, which takes data in an expected format (such as is returned by marc.params.tree),
+    // and outputs an SVG path string that can be set on the 'd' attribute of a <path> element.
+    path: d3.svg.diagonal.radial(),
+    // Defines ordinal (categorical) scales for colors
+    colors: {
+      base: d3.scale.ordinal(),
+      lighter: d3.scale.ordinal()
+    },
+    // Will be used to scale circle areas on data - linear scaling of areal symbols would be inaccurate,
+    // since area increases with the square of the radius
+    radius: d3.scale.sqrt(),
+    // Scale used to convert data values into an opacity range (for fading branches)
+    opaque: d3.scale.linear(),
+    thickness: d3.scale.linear(),
+    // Scale used to offset root category lines based on their array index
+    offset_roots: d3.scale.linear()
+  },
+
+  // Holds SVG elements. 
+  // Not really necessary to fill with 'null'; just easier to keep track of what will be created this way.
+  el: {
+    svg:      null,
+    graphic:  null,
+    tree:     null,
+    labels:   null,
+    roots:    null,
+    branches: null,
+    leaves:   null
+  },
+
+  // Called first; initializes the visual and sets everything else in motion.
+  init: function() {
+    // Listen for button clicks and mouse movement.
+    // Leaf hovers will be listend for later, when those elements are grown from the data.
+    marc.listen.base();
+
+    // Build an SVG 'skeleton', with different elements spawned in proper order (object order matters for SVGs)
+    marc.build();
+
+    // Load pre-generated HILCC tree JSON file, as well as and per-subject circulation + holdings counts output from R. TODO WHICH R SCRIPT
+    queue().defer(d3.json, "HILCC_tree_with_ccckeys.json")
+           .defer(d3.csv, "books-holdings_and_circulations_by_ccckey.csv")
+          // Call marc.ready() once these two data files are loaded
+          .await(marc.ready);
+  },
+
+  // Creates SVG element structure in correct order; also makes hooks for some of those elements ('marc.el.graphic = ') along the way, so that we can easily access them down the line.
+  build: function() {
+    // Main SVG; sized by marc.v.width and marc.v.height
+    marc.el.svg = d3.select(".svg_container").append("svg")
+      .attr("width", marc.v.width)
+      .attr("height", marc.v.height)
+
+    // Primary group; only real purpose is to center the entire visual within the SVG, by
+    // translating by half of SVG width and height
+    marc.el.graphic = marc.el.svg.append("g").attr("class","graphic")
+                        .attr("transform", "translate(" + marc.v.width/2 + "," + (marc.v.height/2) + ")");
+      // Holds the left side 'root' category labels 
+      marc.el.graphic.append('g').attr('class','labels')
+
+    // Holds the vector tree shapes: branches, circles (leaves), center roots
+    marc.el.tree = marc.el.graphic.append("g").attr("class","tree")
+      marc.el.tree.append('g').attr('class','roots')
+      marc.el.tree.append("g").attr("class","branches")
+      marc.el.tree.append("g").attr("class","leaves")
+  },
+
+  // Work with the CSV and JSON data once they're loaded
+  ready: function(error, hilcc, subject_counts) {
+    //////
+    //parameters
+    marc.params.path
+      .projection( function(d) { 
+        //TODO "35" = angle ... /180 * pi makes it work. why
+        return [d.y,  (d.x / 180 * Math.PI)-(35/180*Math.PI) ]; 
+      });
+
+    marc.params.tree
+      .size([260, marc.v.width / 2 -50])
+      .separation(function(a, b) { 
+        // if (a.depth == 1) return 1
+        return (a.parent == b.parent ? 1 : 2) / a.depth; 
+      });
+
+    // define an ordinal scale relating root names to rainbow colors
+    marc.params.colors.base
+      .domain(marc.data.root_names)
+      .range(marc.v.colors.base);
+
+    // take each base color
+    marc.v.colors.base.forEach(function(color){
+      // lighten it (+1.5 gamma)
+      var lighter = d3.hsl(color).brighter(1.5).toString();
+      // and push it to a new array of lighter colors
+      marc.v.colors.lighter.push(lighter)
+    })
+
+    // define a second ordinal scale relating root names to the lighter colors
+    marc.params.colors.lighter
+      .domain(marc.data.root_names)
+      .range(marc.v.colors.lighter);
+
+    // will be used to scale opacity of branches etc.
+    // only setting range because domain is set per-dataset when buttons pressed.
+    // clamp ensures values returned will be within the given range, even if the scale
+    // wants to return something outside of the range based on the data it receives
+    marc.params.opaque.range([.1, 1]).clamp(true)
+
+    marc.params.thickness.range([.5, 1.5]).clamp(true)
+
+    marc.params.radius.range([.5,marc.v.maxradius]);
+
+
+
+    //////
+    //data
+    subject_counts.forEach(function(d) {
+      marc.data.subject_counts[d.ccckey] = { 
+        holdings: +d.holdings,
+        circulations: +d.circulations
+      }
+    })
+
+    marc.tools.inject_hilcc_stats(hilcc)
+    marc.data.hilcc = hilcc;
+   
+    marc.data.tree.nodes = marc.params.tree.nodes(marc.data.hilcc);
+    marc.data.tree.nodes.shift() // pops off the 'trunk' node of the tree, which we aren't interested in...
+    marc.data.tree.nodes.forEach(function(node,i) {
+      marc.tools.get_root_category(node)
+      if (node.depth === 1) marc.data.tree.roots.push(node);
+    });
+
+    marc.data.tree.links = marc.params.tree.links(marc.data.tree.nodes);
+    
+    //////
+    // start 'growing' the tree; connecting scrubbed data to our svg structure from marc.build()
+    marc.grow.init();
+  },
+
+  // grows svg structure around the data
+  grow: {
+    init: function(){ 
+      marc.tools.change_title("")
+      
+      // creates a linear scale that will be used to offset root paths based on their index, enabling
+      // the labels-to-branches effect at center of the visaulization
+      marc.params.offset_roots = d3.scale.linear()
+          .domain([0,marc.data.tree.roots.length-1])
+          .range([-60,60]);
+
+      marc.el.labels   = d3.select('.labels')  .selectAll('.label') .data(marc.data.tree.roots);
+      marc.el.roots    = d3.select('.roots')   .selectAll('.root')  .data(marc.data.tree.roots);
+      marc.el.branches = d3.select('.branches').selectAll('.branch').data(marc.data.tree.links);
+      marc.el.leaves   = d3.select('.leaves')  .selectAll('.leaf')  .data(marc.data.tree.nodes)
+      
+      marc.grow.labels();
+      marc.grow.roots();
+      marc.grow.branches();
+      marc.grow.leaves();
+
+      marc.fertilize.summed_holdings();
+      marc.el.graphic.transition().duration(2000).style('opacity',1)
+    },
+    labels: function(){
+      var labels = marc.el.labels;
+      labels.enter().append("text").each(function(d,i) {
+        var y_off     = marc.params.offset_roots(i), // spread labels in order, from -60 to 60 px vertical offset
+            label     = d3.select(this),             // convenience hook for the current label being iterated on
+            padding   = 5,
+            translate = { 
+                          x: 0 - 100 - padding,   // minus 100 to offset to the left of tree center; minus 5px padding
+                          y: y_off
+                        }
+
+        var _transform = "rotate(0) translate(" + translate.x + "," + translate.y + ")";
+
+        var _attr = {
+                      'class': 'label',
+                      'transform': _transform, 
+                      'text-anchor': 'end',
+                      'dy': '.25em'
+                    },
+            _text = d.name
+
+        label
+          .attr(_attr)
+          .text(_text)
+      });
+    },
+    roots: function() {
+      var roots = marc.el.roots;
+      roots.enter().append("path").each(function(d,i) {
+        var root  = d3.select(this),
+            color = marc.params.colors.lighter(d.rootcategory),   
+            y_off = marc.params.offset_roots(i),
+            // create a new line interpolator, which will convert an array of pixel coordinates into an SVG line definition
+            trace = d3.svg.line().interpolate("basis"),
+
+        // generate the path of the root element using our radial layout
+        // but throw out everything except second pt xy coords
+        // (hijack the SVG pixel coordinate path that it generates and send it to a two-element array 'pt')
+            pt      = marc.params.path({ source: { y: d.y, x: d.x }, target: { y: d.y, x: d.x }  })
+                        .split(" ")[1].split(","),
+        // and instead a two-element array, convert the point to an object with x and y properties because i like it more
+            pt = { x: +pt[0], y: +pt[1] }
+
+        // use the trace() line interpolator defined above to build a line for each root path, curving differently depending on the offset derived from their array indexes.
+        var _d      = trace([ // coords offset from tree center...
+                        [ -100 , y_off ],
+                        [ -90  , y_off ],
+                        [ -10  , y_off * .3], // this line causes the 'bunching' at the tree center
+                        [ pt.x , pt.y  ] 
+                      ])
+
+        var _attr = {
+                      'class': 'root',
+                      'd': _d
+                    },
+            _style = {
+                      'stroke':  color
+                    }
+        root
+          .attr(_attr)
+          .style(_style)
+      });
+  },
+    branches: function() {
+      var branches = marc.el.branches;
+      branches.enter().append("path")
+        .attr('class', 'branch')
+        .attr('d', marc.params.path)
+        .style('stroke', function(d) {
+          var color = marc.params.colors.lighter(d.target.rootcategory)
+          return color;
+        })
+    },
+    leaves: function() {
+      var leaves = marc.el.leaves;
+      leaves.enter().append("g")
+        .each(function(d,i){
+          var leaf       = d3.select(this),
+              _class     = 'leaf', // treedepth_' + d.depth,
+              _rotate    = d.x-90-35,
+              _translate = d.y,
+              _transform = "rotate(" + _rotate + ") translate(" + _translate + ")"
+
+          var _attr = {
+            'class': _class,
+            // 'data-name': d.name,
+            // 'data-rootcat': d.rootcategory,
+            'transform': _transform
+          }
+
+          leaf.attr(_attr)
+          leaf.append("circle")
+        });
+
+      /// circles
+      leaves.select("circle")
+        .attr('class',function(d) { return 'ccc'+d.ccckey })
+        .style('fill', function(d) { return marc.params.colors.base(d.rootcategory) })
+
+      // tooltip events...  
+      marc.listen.leaves();
+    }
+  },
+
+  // transitions svg styles+attribs to show different slices of the data
+  fertilize: {
+    //TODO; cohesive function for these?
+    summed_holdings: function() {
+      var dur      = marc.v.transitions_length,
+          labels   = marc.el.labels,
+          branches = marc.el.branches,
+          roots    = marc.el.roots,
+          leaves   = marc.el.leaves;
+
+      marc.tools.change_title("Books: Aggregate holdings, per subject")
+
+      marc.params.opaque.domain([0,marc.data.max.holdings])
+      marc.params.thickness.domain([0,marc.data.max.holdings])
+      marc.params.radius.domain([0,marc.data.max.holdings]);
+
+      labels
+        .transition().duration(dur)
+        .style('opacity',1)
+
+      roots
+        .transition().duration(dur)
+        .style('opacity', function(d) {          
+          return marc.params.opaque(d.summed.holdings)
+        })
+        .style('stroke-width', function(d) {
+          return marc.params.thickness(d.summed.holdings)
+        })
+
+      branches
+        .transition().duration(dur)
+        .style('opacity', function(d) {
+          return marc.params.opaque(d.target.summed.holdings)
+        })
+        .style('stroke-width', function(d) {
+          return marc.params.thickness(d.target.summed.holdings)
+        })
+
+      leaves
+      .select('circle')
+        .transition().duration(dur)
+        .attr('r',function(d) {
+          return marc.params.radius(d.summed.holdings)
+        })
+    },
+    summed_circulations: function() {
+      var dur      = marc.v.transitions_length,
+          labels   = marc.el.labels,
+          branches = marc.el.branches,
+          roots    = marc.el.roots,
+          leaves   = marc.el.leaves;
+
+      marc.tools.change_title("Books: Aggregate circulation counts, per subject")
+
+      marc.params.opaque.domain([0,marc.data.max.circulations])
+      marc.params.thickness.domain([0,marc.data.max.circulations])
+      marc.params.radius.domain([0,marc.data.max.circulations]);
+
+      roots
+        .transition().duration(dur)
+        .style('opacity', function(d) {
+          return marc.params.opaque(d.summed.circulations)
+        })
+        .style('stroke-width', function(d) {
+          return marc.params.thickness(d.summed.circulations)
+        })
+
+      branches
+        .transition().duration(dur)
+        .style('opacity', function(d) {
+          return marc.params.opaque(d.target.summed.circulations)
+        })
+        .style('stroke-width', function(d) {
+          return marc.params.thickness(d.target.summed.circulations)
+        })
+
+      leaves
+      .select('circle')
+        .transition().duration(dur)
+        .attr('r',function(d) {
+          return marc.params.radius(d.summed.circulations)
+        })
+      },
+    summed_circ_per_hold: function() {
+      var dur      = marc.v.transitions_length,
+          labels   = marc.el.labels,
+          branches = marc.el.branches,
+          roots    = marc.el.roots,
+          leaves   = marc.el.leaves;
+
+      marc.tools.change_title("Books: Relative circulation activity, per subject")
+
+      marc.params.opaque.domain([0,marc.data.max.circ_per_hold])
+      marc.params.thickness.domain([0,marc.data.max.circ_per_hold])
+      marc.params.radius.domain([0,marc.data.max.circ_per_hold]);
+
+      roots
+        .transition().duration(dur)
+        .style('opacity', function(d) {
+          marc.params.opaque.domain([0,marc.data.max.circ_per_hold])
+          return marc.params.opaque(d.summed.circ_per_hold)
+        })
+        .style('stroke-width', function(d) {
+          return marc.params.thickness(d.summed.circ_per_hold)
+        })
+
+      branches
+        .transition().duration(dur)
+        .style('opacity', function(d) {
+          marc.params.opaque.domain([0,marc.data.max.circ_per_hold])
+          return marc.params.opaque(d.target.summed.circ_per_hold)
+        })
+        .style('stroke-width', function(d) {
+          return marc.params.thickness(d.target.summed.circ_per_hold)
+        })
+
+      leaves
+      .select('circle')
+        .transition().duration(dur)
+        .attr('r',function(d) {
+          marc.params.radius.domain([0,marc.data.max.circ_per_hold]);
+          return marc.params.radius(d.summed.circ_per_hold)
+        })
+      }
+  },
+
+  // convenience/helper functions
+  tools: {
+    inject_hilcc_stats: function(subject) {
+      var marc_subject_data = marc.data.subject_counts[subject.ccckey],
+          summed = { holdings: 0, circulations: 0 }
+
+      if ( subject.children ) {
+        subject.children.forEach( function(child) {
+          marc.tools.inject_hilcc_stats(child) // recursion
+          summed.holdings     += child.summed.holdings;
+          summed.circulations += child.summed.circulations;
+        })
+      };
+      
+      if ( marc_subject_data ) {
+        subject.holdings     = marc_subject_data.holdings
+        subject.circulations = marc_subject_data.circulations
+      } else { 
+        subject.holdings = 0; 
+        subject.circulations = 0; 
+      }
+      
+      subject.circ_per_hold = (subject.holdings === 0) ? 0 : subject.circulations / subject.holdings;
+
+      subject.summed = {}
+      // net sum = child sums + specific holdings of the parent
+      subject.summed.holdings      = summed.holdings     + subject.holdings;
+      subject.summed.circulations  = summed.circulations + subject.circulations;  
+      subject.summed.circ_per_hold = (subject.summed.holdings === 0) ? 0 : subject.summed.circulations / subject.summed.holdings;   
+    },
+    get_root_category: function(node) {
+      var parent_depth = (node.parent) ? node.parent.depth : 0;
+      node.rootcategory = (parent_depth > 0) ? get_root(node) : node.name;
+
+      function get_root(branch) {
+        if (branch.parent.depth > 0) return get_root(branch.parent)
+        else return branch.name
+      }
+    },
+    change_title: function(string) {
+      d3.select('.title h1')
+        .transition().duration(300)
+          .style('opacity',0)
+        .transition().duration(300)
+          .text(string)
+          .style('opacity',1)
+    },
+    // crazy regex i found on stack overflow to turn '1000' into '1,000' etc
+    numberWithCommas: function(number) {
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
+    }
+  },
+
+  // functions to start listening for events
+  listen: {
+      base: function() {
+        //buttons
+        $('.button#summed_holdings').click(marc.fertilize.summed_holdings)
+        $('.button#summed_circulations').click(marc.fertilize.summed_circulations)
+        $('.button#summed_circ_per_hold').click(marc.fertilize.summed_circ_per_hold)
+
+        // mouse movement
+        d3.select('body').on('mousemove',function(d) {
+          var m = {
+                x: d3.mouse(this)[0],
+                y: d3.mouse(this)[1]
+              },
+              offset  = 20,
+              _bottom = ($(window).height() - m.y - offset*2),
+              _left   = (m.x+offset);
+
+          d3.select('.tooltip')
+            .style('bottom', _bottom + "px") 
+            .style('left',   _left   + "px")
+        })
+      },
+
+      //TODO do leaves need to be separated?
+      leaves: function() {
+        var leaves  = d3.selectAll(".leaf"),
+            tooltip = d3.select('.tooltip');
+        
+        leaves
+          .on('mouseover', function(d) {
+            var color = marc.params.colors.base(d.rootcategory),
+                commas = marc.tools.numberWithCommas;
+
+            tooltip.transition().duration(200)
+              .style('opacity',1)
+              .style('display','inline')
+
+            tooltip.select('#hilcc-name')         .text(d.name).style('color',color)
+            tooltip.select('#hilcc-holdings')     .text(commas(d.summed.holdings))
+            tooltip.select('#hilcc-circulations') .text(commas(d.summed.circulations))
+            tooltip.select('#hilcc-circ_per_hold').text( d3.round( d.summed.circ_per_hold ,2) )
+          })
+          .on('mouseout', function(d) {
+            tooltip.transition().duration(200)
+              .style('opacity',0)
+          })
+      }
+    }
+}
+
+marc.init()
+
+</script>
