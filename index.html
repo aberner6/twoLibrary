@@ -5,25 +5,25 @@
 #circle1
 {
 border-radius: 100% 100% 100% 100%;
-width: 35%;
+width: 25%;
 /*height: 348.5;*/
-/*margin-top: -10%;*/
-margin-right: 8%;
+margin-top: 2%;
+/*margin-right: 8%;*/
 opacity:.5;
 z-index:1;
-
+position:relative;
 }
 #circle2
 {
 border-radius: 100% 100% 100% 100%;
-width:42%;
+width:29%;
 /*width: 399.5;*/
 /*height: 348.5;*/
-/*margin-top: -10%;*/
-margin-left: 8%;
+margin-top: 2%;
+/*margin-left: 8%;*/
 opacity:1;
 z-index:1;
-
+position:relative;
 }
 #circle2:hover{
   opacity:.3;
@@ -33,6 +33,7 @@ z-index:1;
 }
 
 body {
+
   font-family: "Gotham-Light", sans-serif;
     font-weight:100;
    height: 100%;
@@ -49,6 +50,12 @@ body {
     font-weight: 100;
     src: local('Gotham-Light'), local('Gotham-Light'), url(Gotham-Light.otf) format('truetype');
 }
+@font-face {
+    font-family: 'AkzidenzGrotesk-Light';
+    font-style: normal;
+    /*font-weight: 100;*/
+    src: local('AkzidenzGrotesk-Light'), local('AkzidenzGrotesk-Light'), url(AkzidenzGrotesk-Light.otf) format('truetype');
+}
 .introTitle{
     /*text-align: center;*/
     font-size:18pt;
@@ -57,6 +64,7 @@ width: 450px;
 letter-spacing: 1pt;
 text-align: left;
 margin-top: -14%;
+
 }
 .intro{
 /*line-height: 21px;
@@ -72,7 +80,7 @@ line-height: 21px;
 width: 600px;
 letter-spacing: 1pt;
 text-align: left;
-margin-top: 5px;
+margin-top: 65px;
 background-color: rgb(248, 248, 248);
 padding-top: 60px;
 z-index: 0;
@@ -80,42 +88,49 @@ padding-left: 40px;
 padding-right: 40px;
 padding-bottom: 3px;
 padding-top: 83px;
+  border-bottom: 1px solid rgba(170, 165, 165, .5);
 
 }
 .title1{
-position:absolute;
-
-  /*border-radius: 100% 100% 100% 100%;*/
-margin-top: 10%;
-margin-left: 10%;
+position: absolute;
+/* border-radius: 100% 100% 100% 100%; */
+margin-top: 7%;
+margin-left: 26%;
 letter-spacing: 1pt;
 text-align: left;
-z-index:1000;
-/*background-color: rgb(248, 248, 248);*/
+z-index: 1000;
+background-color: rgba(248, 248, 248,0.5);
 padding: 7px;
-/*opacity:0;*/
-display:none;
-font-size:14pt;
-width:250px;
+/* opacity: 0; */
+ display: none; 
+font-size: 12pt;
+width: 210px;
+border-bottom: 1px solid rgba(170, 165, 165, .5);
+
 }
 .title2{
-position:absolute;
-  /*border-radius: 100% 100% 100% 100%;*/
-margin-top: 10%;
-margin-left: 62.5%;
+  border-bottom: 1px solid rgba(170, 165, 165, .5);
+
+position: absolute;
+/* border-radius: 100% 100% 100% 100%; */
+margin-top: 7%;
+margin-left: 52.5%;
 letter-spacing: 1pt;
 text-align: left;
-z-index:1000;
-/*background-color: rgb(248, 248, 248);*/
+z-index: 1000;
+background-color: rgba(248, 248, 248,0.2);
 padding: 7px;
-/*opacity:0;*/
-display:none;
-font-size:14pt;
-width:320px;
-
+/* opacity: 0; */
+ display: none; 
+font-size: 12pt;
+width: 211px;
 
 }
-
+#logo{
+  font-family: 'AkzidenzGrotesk-Light';
+  font-size: 10pt;
+  margin-top: 25px;
+}
 </style>
 <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 </head>
@@ -128,8 +143,8 @@ width:320px;
 </center>
 <center>
 
-<div class="title1">Enter Catalog:<br> A visualization of the Columbia Library's holdings, circulation and activity</div>
-<div class="title2">Enter Crossing Disciplines:<br>A digital library tool for multidisciplinary exploration.</div>
+<div class="title1"><b>Catalog:</b><br> A visualization of the Columbia Library's holdings, circulation and activity</div>
+<div class="title2"><b>Crossing Disciplines:</b><br>A digital library tool for multidisciplinary exploration.</div>
 
 <a href="/derek/index.html"><img style="border:0;" src="derek.png" id="circle1" alt="Collection"></a>
 
@@ -139,22 +154,22 @@ width:320px;
 
 
 </center>
-
+<div id ="logo">Spatial Information Design Lab | Columbia Library</div>
 </body>
 <script>
 
 $("#circle1").on("mouseover", function(){
 $(".title1").slideDown();
 })
-$("#circle1").on("mouseout", function(){
-$(".title1").slideUp();
-})
+// $("#circle1").on("mouseout", function(){
+// $(".title1").slideUp();
+// })
 $("#circle2").on("mouseover", function(){
 $(".title2").slideDown();
 })
-$("#circle2").on("mouseout", function(){
-$(".title2").slideUp();
-})
+// $("#circle2").on("mouseout", function(){
+// $(".title2").slideUp();
+// })
 
 </script>
 </html>
