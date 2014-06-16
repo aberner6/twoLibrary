@@ -43,27 +43,48 @@ border-bottom: 1px yellow solid;
   cursor: pointer;
 
 }
-#subline{
-    position:fixed;
 
-  font-size: 10px;
-  /*cursor: pointer;*/
-/*width: 10%;
-height: 5%;*/
-letter-spacing: 0.5pt;
-/*margin-left: 11.6em;*/
-margin-top: -1em;
-/*position:absolute;*/
-padding:5px;
-font-weight:300px;
-border-bottom: 1px gray solid;  
-z-index:1000;
+#title1{
+  position:fixed;
+text-align: left;
+
+  font-weight: 300;
+  font-size: 24px;
+  text-transform: uppercase;
+  /*position: relative;*/
+width: 25%;
+height: 5%;
+
+margin-left: 1.5em;
+margin-top: -0.1em;
+/*margin-left: .5em;*/
+margin-top: -1.5em;
+line-height: 1.5em;
+  /*box-shadow: 0 1px #e2e5e4;*/
+
 }
-#subline:hover{
-      background-color: rgba(65, 63, 63, 1);
-    color:white;
-  cursor: pointer;
-border-bottom: 1px yellow solid;  
+#byline{
+position: fixed;
+font-size: 10px;
+/* margin-left: 3.8em; */
+margin-top: -0.9em;
+/* position: absolute; */
+font-weight: 300px;
+letter-spacing: 0.5pt;
+margin-left: 3.8em;
+}
+#subline{
+position: fixed;
+font-size: 10px;
+/* cursor: pointer; */
+letter-spacing: 0.5pt;
+margin-left: 3.3em;
+margin-top: 1.8em;
+/* position: absolute; */
+padding: 5px;
+font-weight: 300px;
+border-bottom: 1px gray solid;
+
 }
 #about{
     position:fixed;
@@ -75,36 +96,71 @@ border-bottom: 1px yellow solid;
 /*width: 20%;*/
 height: 5%;
 letter-spacing: 0.5pt;
-/*margin-left: 5.8em;*/
-margin-top: 2.4em;
+margin-left:3.8em;
+margin-top:5.4em;
   /*cursor: pointer;*/
 
 }
+#subline:hover{
+      background-color: rgba(65, 63, 63, 1);
+    color:white;
+  cursor: pointer;
+border-bottom: 1px yellow solid;  
+}
+
+
+
 .title {
-width: 840px;
+/*width: 840px;
 height: 54px;
 margin-top: -30px;
+text-align: left;*/
+
+
+
+width: 840px;
+/* height: 54px; */
+/* margin-top: -40px; */
 text-align: left;
+/* margin-top: -2.5em; */
+position: relative;
+margin-left: 40%;
 }
-  .header { 
-    float:left; 
+.header { 
+/*    float:left; 
     height: 54px; 
     width: 493px;
     overflow: hidden;
-    white-space: nowrap;
-  }
+    white-space: nowrap;*/
+float: right;
+width: 493px;
+margin-left: 1.5em;
+position: relative;
+}
   .header h1 {
-    color: #777;
+/*    color: #777;
 
     font-size: 20px;
     line-height:25px;
-    font-weight: 400;
+    font-weight: 400;*/
+color: #777;
+font-size: 1em;
+/* line-height: 25px; */
+font-weight: 400;
   }
   .buttons { 
-float: right;
+/*float: right;
 position: absolute;
 width: 370px;
+text-align: right;*/
+
+/* float: right; */
+position: absolute;
+width: 320px;
 text-align: right;
+margin-left: 40%;
+margin-top: 4%;
+z-index: 10000;
   }
   .button {
 display: inline-block;
@@ -173,6 +229,7 @@ cursor: pointer;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .1);
   box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);*/
 position: absolute;
+
 background-color: rgba(231, 231, 231, 1);
 border: 1px solid rgba(170, 165, 165, 1);
 padding: 10px;
@@ -184,6 +241,8 @@ opacity: 0;
 display: none;
 -webkit-box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .1);
 box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);
+z-index: 10000;
+
 }
   .tooltip span { 
     font-size: 15px;
@@ -194,7 +253,7 @@ box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);
   }
 
 .svg_container {
-  position:relative;
+  position:absolute;
   width:100%;
   height:800px;
   z-index:1;
@@ -230,16 +289,12 @@ box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);
     <div id="backNav">
     <a href="javascript:history.back()"><img src="../backNav.png" width="15" height="15"></a>
   </div>
-  <div class="centered">
-    <div class="title">
-      <div class="header"><h1></h1></div>
-      <span class="buttons">
-        <div class="button" id="summed_holdings">Total holdings</div>
-        <div class="button" id="summed_circulations">Total circulations</div>
-        <div class="button" id="summed_circ_per_hold">Relative activity</div>
-      </span>
-    </div>
-  <div id="subline">
+    <div id="title1">Catalog</div>
+<div id="byline">
+ <p>A visualization of the Columbia Library's holdings, circulation and activity</p>
+</div>
+
+<div id="subline">
     About
   </div>
   <div id="about">
@@ -249,15 +304,23 @@ box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);
 
 <p>Laura Kurgan, Project Director</p>
 
-<p>Jen Lowe, Data Visualization and Data Analysis</p>
+<p>Jen Lowe, Research Associate and Data Visualization</p>
 
-<p>Annelie Berner, Application and Design Development, D3 Progamming.</p>
+<p>Derek Watkins, Research Associate and Data Visualization</p>
 
-<p>Columbia Library</p>
-
-<p>Alex Gil, Jeffrey Lancaster, Barbara Rochenbach</p>
+<p>In collaboration with Alex Gil, and the Columbia Library</p>
 
 </div>
+  <div class="centered">
+    <div class="title">
+      <div class="header"><h1></h1></div>
+      <span class="buttons">
+        <div class="button" id="summed_holdings">Total holdings</div>
+        <div class="button" id="summed_circulations">Total circulations</div>
+        <div class="button" id="summed_circ_per_hold">Relative activity</div>
+      </span>
+    </div>
+  
     <div class="svg_container"></div>
     
     <div class="tooltip">
@@ -392,7 +455,7 @@ var marc = {
     // Primary group; only real purpose is to center the entire visual within the SVG, by
     // translating by half of SVG width and height
     marc.el.graphic = marc.el.svg.append("g").attr("class","graphic")
-                        .attr("transform", "translate(" + marc.v.width/2 + "," + (marc.v.height/2) + ")");
+                        .attr("transform", "translate(" + marc.v.width/2 + "," + 420 + ")");
       // Holds the left side 'root' category labels 
       marc.el.graphic.append('g').attr('class','labels')
 
@@ -799,11 +862,27 @@ var marc = {
               },
               offset  = 20,
               _bottom = ($(window).height() - m.y - offset*2),
-              _left   = (m.x+offset);
+              _left   = (m.x+offset),
+              _top   = (m.y +offset),
+              _top2 = m.y;
 
           d3.select('.tooltip')
             .style('bottom', _bottom + "px") 
-            .style('left',   _left   + "px")
+            .style('left',   _left   + "px");
+// var heightIs=100;
+// if(m.y<heightIs){
+//   d3.select('.tooltip')
+//               // .style('bottom', _bottom + "px") 
+//             .style('top', _top + "px") 
+//              .style('left',   _left   + "px");
+// }
+// if(m.y>heightIs){
+//           d3.select('.tooltip')
+//             // .style('top',_top2+"px") 
+//             .style('bottom', _bottom + "px") 
+//             .style('left',   _left   + "px");
+// }
+
         })
       },
 
@@ -825,6 +904,17 @@ var marc = {
             tooltip.select('#hilcc-holdings')     .text(commas(d.summed.holdings))
             tooltip.select('#hilcc-circulations') .text(commas(d.summed.circulations))
             tooltip.select('#hilcc-circ_per_hold').text( d3.round( d.summed.circ_per_hold ,2) )
+
+if(m.y<heightIs){
+$(".tooltip").animate({
+  height:"200px", 
+});
+}
+else{
+$(".tooltip").animate({
+  height:"initial", 
+});
+}
           })
           .on('mouseout', function(d) {
             tooltip.transition().duration(200)
