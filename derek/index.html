@@ -29,18 +29,67 @@ body {
         margin: 0 auto;
         width: 800px;
 }
+#backNav{
+  background-color: rgba(221, 221, 221, 1);
+padding: 5px;
+width: 1em;
+border-bottom: 1px darkgray solid;
+margin-left:-8px;
+margin-top:-4px;
+}
+#backNav:hover{
+    background-color: rgba(65, 63, 63, 1);
+border-bottom: 1px yellow solid;
+  cursor: pointer;
 
+}
+#subline{
+    position:fixed;
+
+  font-size: 10px;
+  /*cursor: pointer;*/
+/*width: 10%;
+height: 5%;*/
+letter-spacing: 0.5pt;
+/*margin-left: 11.6em;*/
+margin-top: -1em;
+/*position:absolute;*/
+padding:5px;
+font-weight:300px;
+border-bottom: 1px gray solid;  
+z-index:1000;
+}
+#subline:hover{
+      background-color: rgba(65, 63, 63, 1);
+    color:white;
+  cursor: pointer;
+border-bottom: 1px yellow solid;  
+}
+#about{
+    position:fixed;
+
+/*position:absolute;*/
+  font-size: 10px;
+  display:none;
+  width:15%;
+/*width: 20%;*/
+height: 5%;
+letter-spacing: 0.5pt;
+/*margin-left: 5.8em;*/
+margin-top: 2.4em;
+  /*cursor: pointer;*/
+
+}
 .title {
 width: 840px;
 height: 54px;
-/*padding-top: 70px;*/
-padding-bottom: 10px;
+margin-top: -30px;
 text-align: left;
 }
   .header { 
     float:left; 
     height: 54px; 
-    width: 450px;
+    width: 493px;
     overflow: hidden;
     white-space: nowrap;
   }
@@ -62,16 +111,17 @@ display: inline-block;
 padding: 6px;
 margin: 13px 0px;
 background-color: white;
-border: 1px solid rgba(170, 165, 165, 1);
+border-bottom: 1px solid rgba(170, 165, 165, 1);
 color: #666;
 font-size: 11px;
 font-weight: 300;
 line-height: 12px;
+margin-left: 5px;
 /* text-shadow: 1px 1px 0 rgba(0,0,0,0.3); */
 text-align: center;
--webkit-border-radius: 4px;
+/*-webkit-border-radius: 4px;
 -moz-border-radius: 4px;
-border-radius: 4px;
+border-radius: 4px;*/
 /* -webkit-box-shadow: inset 0px 0px 15px 5px #111; */
 /* box-shadow: inset 0px 0px 15px 5px white; */
 cursor: pointer;
@@ -101,7 +151,7 @@ cursor: pointer;
   }
   .button:hover{
     color: white;
-    border:1px solid rgba(65, 63, 63, 1); 
+    border:1px solid yellow; 
     background-color: rgba(65, 63, 63, 1);
   }
 
@@ -140,12 +190,14 @@ box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);
     font-weight: 400;
     line-height: 15px;
     color: rgba(65, 63, 63, 1); 
+    z-index:1000;
   }
 
 .svg_container {
   position:relative;
   width:100%;
   height:800px;
+  z-index:1;
 }
   svg .graphic { opacity: 0; }
     .label {
@@ -171,9 +223,13 @@ box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);
         opacity:.9;
         stroke: white;
       }
+
 </style>
 
 <body>
+    <div id="backNav">
+    <a href="javascript:history.back()"><img src="../backNav.png" width="15" height="15"></a>
+  </div>
   <div class="centered">
     <div class="title">
       <div class="header"><h1></h1></div>
@@ -183,7 +239,25 @@ box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, .1);
         <div class="button" id="summed_circ_per_hold">Relative activity</div>
       </span>
     </div>
+  <div id="subline">
+    About
+  </div>
+  <div id="about">
+  Project Team:
 
+<p>Spatial Information Design Lab</p>
+
+<p>Laura Kurgan, Project Director</p>
+
+<p>Jen Lowe, Data Visualization and Data Analysis</p>
+
+<p>Annelie Berner, Application and Design Development, D3 Progamming.</p>
+
+<p>Columbia Library</p>
+
+<p>Alex Gil, Jeffrey Lancaster, Barbara Rochenbach</p>
+
+</div>
     <div class="svg_container"></div>
     
     <div class="tooltip">
@@ -761,5 +835,12 @@ var marc = {
 }
 
 marc.init()
-
+$("#subline").click(function(){
+  $("#about").toggle("fast");
+//first transition
+  d3.select("#about").on("click",function(){
+  // svg.call(transition, p0, p1);
+  // svg.call(transition, p6,p6)
+  })
+})
 </script>
