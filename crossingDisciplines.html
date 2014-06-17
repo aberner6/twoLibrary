@@ -13,6 +13,16 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" /> 
 
 <link href="css/tipsy.css" rel="stylesheet" type="text/css" /> 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52026122-1', 'spatialinformationdesignlab.org');
+  ga('send', 'pageview');
+
+</script>
 	</head>
 	<style>
 </style>
@@ -32,8 +42,9 @@
 
 
 
-
+<!-- <center> -->
 <div id = "container"></div>
+<!-- </center> -->
 	<div id="title">Crossing Disciplines</div>
 	<div id="clearAll">CLEAR
 	</div>
@@ -70,11 +81,11 @@
 </div>
 <!-- <div class = "innerText" style="top:41px; left:918px;"></div> -->
 
+		<div id="skip">Enter</div>
 
 <div class="center">
-		<div id="skip">Enter</div>
 		<div id="skip2">Skip Intro</div>
-
+</div>
 	<div class="intro"> 
 
 
@@ -90,7 +101,7 @@
 	</div>
 	</div>
 </div>
-</div>
+<!-- </div> -->
 <div class="center">
 	<div class="introZoom"> 
 
@@ -241,7 +252,7 @@ var boolSelected = 0;
 var showReset = false;
 
 
-var	width = window.outerWidth,
+var	width = 1440,
 	height = window.innerHeight;
 var animateZoom = false;
 
@@ -266,7 +277,15 @@ d3.select("#container").transition().style("opacity", 1.0).style("pointer-events
 		skipIntro2();
 	})
 
+
+
+
+// $('#backNav').on("click",function(){
+//     window.history.back()
+// })
+
 $('.clickZoom').on("click",function(){
+	clearEverything();
 d3.select("#container").style("pointer-events","none");
 
 $('#about2').fadeOut("slow");
@@ -601,7 +620,7 @@ var text = vis.selectAll('.subjectText')
 		return "subjectText"; 
 	})
 	.attr("x", function(d,i){ 
-		if (subjX[i]>windowWidth/2){
+		if (subjX[i]>width/2){
 			$(".subjectText").animate().css('text-align','left');
 
 				return subjX[i]; 	
@@ -857,7 +876,7 @@ function makeGraphsBig(){
 d3.tsv("subjects_top25.tsv", function(error, data) {
 	var mapRect = d3.scale.linear()
 	.domain([0, freqIs.length])
-	.range([710,440]); //not 480
+	.range([680,440]); //not 480
 
 // if (freqIs.length>0){
 var graphRects = secondVis.selectAll("rectsAre")
@@ -896,7 +915,7 @@ var graphText = secondVis.selectAll("textsAre")
 	.text(function(d){
 		return d.subject;
 	})
-	.attr("fill","darkgray");
+	.attr("fill","black");
 
 	// if (rectClicked==true){
 	d3.selectAll(".rectsAre")
@@ -3049,5 +3068,6 @@ for (i=0; i<subjCode.length; i++){
 }
 
 </script>
+
 </body>
 </html>

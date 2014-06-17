@@ -314,9 +314,10 @@ color:rgba(65, 63, 63, 1);
 font-size: 14px;
 line-height: 18px;
 border: 1px solid rgba(65, 63, 63, 1);
-width: 26%;
+width: 350px;
 top: 250px;
 padding:8px;
+left:544px;
 
 
 
@@ -489,7 +490,7 @@ border-bottom: 1px yellow solid;
 }
 
 #exitGraph{
-left: 4px;
+left: 8px;
 bottom: 8px;
 cursor: pointer;
 /*color: rgba(65, 63, 63, 1);*/
@@ -645,10 +646,11 @@ color:rgba(65, 63, 63, 1);
 ;
 /*background-color: lightgray;*/
   padding: 5px;
-margin-top: 37em;
-	margin-left: 10%;
+margin-top: 28em;
+	margin-left: 155px;
 	display:none;
 	opacity: 1;
+left: 544px;
 /*	background-color: rgba(0, 0, 0, 0.12)
 */}
 .center
