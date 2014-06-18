@@ -631,12 +631,13 @@ color:rgba(65, 63, 63, 1);
 ;
 /*background-color: lightgray;*/
   padding: 5px;
-margin-top: 37em;
-	margin-left: 10%;
+/*margin-top: 37em;*/
+	/*margin-left: 10%;*/
 	display:none;
 	opacity: 1;
-/*	background-color: rgba(0, 0, 0, 0.12)
-*/}
+			right:4px;
+			bottom:4px;	
+}
 #skip{
 	letter-spacing: 2px;
 	position: absolute;
