@@ -224,20 +224,30 @@ var animateOpening =true;
 
 d3.select("#container").style("pointer-events","none");
 d3.select("#intro2")
+	.transition()
 	.style("display", "block")
-	.style("opacity", 1.0);
+	.style("opacity", 1.0)
+	.each("end",function(){
+		console.log(tigReggib)
+		if (tigReggib>=connDataLength-100){
+					console.log(tigReggib)
+
+			// preDoLines();
+		}
+	})
 $('#skip').fadeIn("slow");
 var countProgress = 0;
 
 $('#skip').on("click",function(){
-		d3.selectAll("#intro1, #intro2,.intro").transition().style("opacity", 0.0).style("display", "none");
-		$('#skip').fadeOut("fast");	
+d3.selectAll("#intro1, #intro2,.intro").transition().style("opacity", 0.0).style("display", "none");
+$('#skip').fadeOut("fast");	
 d3.select("#container").transition().style("opacity", 1.0).style("pointer-events","auto");
+	preDoLines();
 
-	})
-	$('#skip2').on("click",function(){
+})
+$('#skip2').on("click",function(){
 		skipIntro2();
-	})
+})
 
 $('.clickZoom').on("click",function(){
 	clearEverything();
@@ -738,7 +748,7 @@ firstLoadVar = setInterval(function(){
 function runOnce(){
 	runInnerCircles();
 	runOuterCircles();
-	preDoLines();
+	// preDoLines();
 	}
 
 var countLittleCircle = 0;
@@ -869,6 +879,7 @@ if (tigReggib<connDataLength-1){
 	runLinesOut(cData[tigReggib].codeName, tigReggib); //FIX CODENAME
 }
 else {}
+
 },1);
 if (tigReggib>=connDataLength-1){
 	clearInterval(myVar);
@@ -925,7 +936,8 @@ function newFunction(){
 	for (i=0; i<storeLengths.length; i++){
 		anglesAre[storeLengths[i]]+=jumps[storeLengths[i]];
 		holdAngles.push(anglesAre[storeLengths[i]]);
-	}	
+	}
+	
 }
 
 var count = 0;
@@ -1182,7 +1194,9 @@ d3.selectAll(".linesIn"+passSubjNum)
 
 //for litte circles
 function runLinesOut(arrayOfSubjs, index){
-
+// if (index>300){
+	// console.log(index)
+// }
 thisIs = arrayOfSubjs.split(",");
 
 thisCircle = index;
@@ -1249,6 +1263,7 @@ var newG = vis.selectAll("linesOut")
 				}
 			}
 	})
+
 }
 
 
@@ -2376,26 +2391,25 @@ d3.select("#container").style("pointer-events","none");
     var k = height / p[2]; //*2;
     return "translate(" + (center[0] - p[0] * k) + "," + (center[1] - p[1] * k) + ")scale(" + k + ")";
   	}
-  // d3.select("circle.inCircle"+specialCirc).transition().attr("opacity","1")
 }
 }
 
 function preDoLines(){
+console.log("predolines")
 
-
-d3.selectAll("line.hey"+specialCirc)
-	.transition()
-	.delay(1200)
-	.attr("x2",0)
-	.attr("y2",0)
-	.each("end",function(){
-  	$("#intro12").show("fast"); //SUBJECTS		
-	})
+// d3.selectAll("line.hey"+specialCirc)
+// 	.transition()
+// 	.delay(1200)
+// 	.attr("x2",0)
+// 	.attr("y2",0)
+// 	.each("end",function(){
+//   	$("#intro12").show("fast"); //SUBJECTS		
+// 	})
 // d3.selectAll(".mouseoverText").remove();
 d3.select("circle.inCircle"+specialCirc)
   	.transition()
   	.duration(1000)
-  	.attr("opacity",".1")
+  	.attr("opacity","1")
   	.each("end",function(){
 
 ///////////////////first subject
@@ -2403,7 +2417,7 @@ d3.select("circle.inCircle"+specialCirc)
 //SELECT ONE SUBJECT "CLICK IT"
 
 			matching = 0;
-
+// if(calcX.length>connDataLength-1){
 for (i=0; i<subjCode.length; i++){ 
 	if (subjCode[i]==specialSubj1){ 
 		specialIndex1 = i; 
@@ -2417,8 +2431,8 @@ for (i=0; i<subjCode.length; i++){
 }
 		d3.select(".surroundingPoints"+specialSubj1)
 			.transition()
-			.delay(1000)
-			.duration(2000)
+			.delay(500)
+			.duration(1000)
 			.attr("y", subjY[specialIndex1]-10)
 			.attr("height",14)
 			.attr("stroke", colors[subjLoc[specialIndex1]])
@@ -2434,7 +2448,7 @@ for (i=0; i<subjCode.length; i++){
 		d3.select(".surroundingPoints"+specialSubj2)
 			.transition()
 			.delay(1000)
-			.duration(2000)
+			.duration(500)
 			.attr("y", subjY[specialIndex2]-10)
 			.attr("height",14)
 			.attr("stroke", colors[subjLoc[specialIndex2]])
@@ -2449,7 +2463,7 @@ for (i=0; i<subjCode.length; i++){
 			// .each("end",function(){
 				d3.select(".surroundingPoints"+specialSubj3)
 					.transition()
-					.delay(1000)
+					.delay(2000)
 					.duration(1000)
 					.attr("y", subjY[specialIndex3]-10)
 					.attr("height",14)
@@ -2461,6 +2475,7 @@ for (i=0; i<subjCode.length; i++){
 })
 				})
 		})
+		// }
 		})
 }
 
