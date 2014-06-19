@@ -153,6 +153,21 @@ cursor: pointer;
     border:1px solid yellow; 
     background-color: rgba(65, 63, 63, 1);
   }
+#summed_circulations.selected{
+    color: white;
+    border:1px solid yellow; 
+    background-color: rgba(65, 63, 63, 1);  
+}
+#summed_holdings.selected{
+    color: white;
+    border:1px solid yellow; 
+    background-color: rgba(65, 63, 63, 1);  
+}
+#summed_circ_per_hold.selected{
+    color: white;
+    border:1px solid yellow; 
+    background-color: rgba(65, 63, 63, 1);  
+}
 
 .tooltip {
 position: absolute;
@@ -781,6 +796,30 @@ var marc = {
         $('.button#summed_circulations').click(marc.fertilize.summed_circulations)
         $('.button#summed_circ_per_hold').click(marc.fertilize.summed_circ_per_hold)
 
+
+
+d3.select("#summed_holdings")
+.on("click",function(){
+        d3.select("#summed_holdings").classed("selected", true);
+        d3.select("#summed_circ_per_hold.selected").classed("selected",false);
+        d3.select("#summed_circulations.selected").classed("selected", false);
+})
+d3.select("#summed_circulations")
+.on("click",function(){
+        d3.select("#summed_circulations").classed("selected", true);
+        d3.select("#summed_holdings.selected").classed("selected", false);
+        d3.select("#summed_circ_per_hold.selected").classed("selected", false);
+})
+d3.select("#summed_circ_per_hold")
+.on("click",function(){
+        d3.select("#summed_circ_per_hold").classed("selected", true);
+        d3.select("#summed_circulations.selected").classed("selected", false);
+        d3.select("#summed_holdings.selected").classed("selected", false);
+})
+
+
+
+
         // mouse movement
         d3.select('body').on('mousemove',function(d) {
           var m = {
@@ -860,4 +899,6 @@ $("#subline").click(function(){
   // svg.call(transition, p6,p6)
   })
 })
+
+
 </script>
