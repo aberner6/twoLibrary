@@ -228,10 +228,11 @@ d3.select("#intro2")
 	.style("display", "block")
 	.style("opacity", 1.0)
 	.each("end",function(){
+		d3.select("g").transition().attr("opacity",.5)
 		console.log(tigReggib)
 		if (tigReggib>=connDataLength-100){
 					console.log(tigReggib)
-d3.select("#container").transition().style("opacity", 0.4);
+// d3.select("#container").transition().style("opacity", 0.4);
 			// preDoLines();
 		}
 	})
@@ -2489,6 +2490,7 @@ for (i=0; i<subjCode.length; i++){
   				.duration(1000)
   				.attr("opacity",".9")
   				.each("end",function(){
+  							d3.select("g").transition().attr("opacity",1)
   					clearEverything();
 					})
 				})
