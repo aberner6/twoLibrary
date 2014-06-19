@@ -231,20 +231,25 @@ d3.select("#intro2")
 		console.log(tigReggib)
 		if (tigReggib>=connDataLength-100){
 					console.log(tigReggib)
-
+d3.select("#container").transition().style("opacity", 0.4);
 			// preDoLines();
 		}
 	})
+
+
 $('#skip').fadeIn("slow");
 var countProgress = 0;
 
 $('#skip').on("click",function(){
 d3.selectAll("#intro1, #intro2,.intro").transition().style("opacity", 0.0).style("display", "none");
 $('#skip').fadeOut("fast");	
-d3.select("#container").transition().style("opacity", 1.0).style("pointer-events","auto");
-	preDoLines();
+d3.select("#container").transition().style("opacity", 1);
+// .style("pointer-events","auto");
+
 
 })
+
+
 $('#skip2').on("click",function(){
 		skipIntro2();
 })
@@ -402,7 +407,7 @@ var matching = 0;
 var rectClicked = false;
 var wordWidth = [];
 function runOuterCircles(){
-d3.tsv("subjects_top25.tsv", function(error, data) {
+d3.tsv("subjects_top25_option1.tsv", function(error, data) {
 var jump = Math.PI*2/data.length; //    float jump = TWO_PI/(float
 var angle = 0;
 
@@ -620,7 +625,7 @@ var secondVis = svg
  	.attr("transform",
       "translate("+ 0 + "," + 0 + ")")
 function makeGraphsBig(){
-d3.tsv("subjects_top25.tsv", function(error, data) {
+d3.tsv("subjects_top25_option1.tsv", function(error, data) {
 	var mapRect = d3.scale.linear()
 	.domain([0, freqIs.length])
 	.range([680,440]); //not 480
@@ -734,6 +739,7 @@ firstLoadVar = setInterval(function(){
 	d3.tsv("connectionfreqcodes_top25.txt", function(error, cData) {
 	firstLoad++; 
 	if (firstLoad>=0){
+		// console.log(firstLoad);
 	storeInnerSubjs(cData[firstLoad].codeName, firstLoad);		
 	}
 	})
@@ -862,6 +868,9 @@ var inCircle = vis.selectAll("inCircle")
 
 
 makeGlyph();    
+if(firstLoad>400){
+	preDoLines();
+}
 // $('#container').click(function(d,i) {
 // d3.select("#container").transition().style("opacity", 1);
 // console.log("clicked container")
@@ -1197,6 +1206,8 @@ function runLinesOut(arrayOfSubjs, index){
 // if (index>300){
 	// console.log(index)
 // }
+
+
 thisIs = arrayOfSubjs.split(",");
 
 thisCircle = index;
@@ -2396,7 +2407,7 @@ d3.select("#container").style("pointer-events","none");
 
 function preDoLines(){
 console.log("predolines")
-
+// d3.select("#container").pointer-events("none")
 // d3.selectAll("line.hey"+specialCirc)
 // 	.transition()
 // 	.delay(1200)
@@ -2409,7 +2420,7 @@ console.log("predolines")
 d3.select("circle.inCircle"+specialCirc)
   	.transition()
   	.duration(1000)
-  	.attr("opacity","1")
+  	.attr("opacity",".2")
   	.each("end",function(){
 
 ///////////////////first subject
@@ -2472,11 +2483,19 @@ for (i=0; i<subjCode.length; i++){
 				runLines(specialSubj3);
 				checkedIt.push(specialSubj3);
 				checked(checkedIt);
-})
+				// d3.select()
+		d3.select(".surroundingPoints"+specialSubj1)
+  				.transition()
+  				.duration(1000)
+  				.attr("opacity",".9")
+  				.each("end",function(){
+  					clearEverything();
+					})
 				})
 		})
 		// }
 		})
+})
 }
 
 </script>
