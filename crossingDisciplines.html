@@ -110,7 +110,7 @@
 				<p>The book list displays the books titles</p>
 	</div>
 	<div id="intro14" style="display: none;">
-				<p>Click any book title to view its record in the Columbia Library.</p><p>The search might incite new discoveries amidst the 125,000 entries which include multiple disciplines in their catalogue description.</p>
+				<p>Click any title to view its record in the Columbia Library.</p><p>The search might incite new discoveries amidst the 125,000 entries which include multiple disciplines in their catalogue description.</p>
 	</div>
 	</div>
 
@@ -1805,6 +1805,7 @@ incomingSplit = incomingIs.split(",");
  var itsHeight;
  var clickOut = false;
 var updateHoverbox = function(theseBooks, whichCode) {
+	console.log(theseBooks)
 d3.select("#hoverbox")
 .transition()
 // .delay(500)
@@ -2101,7 +2102,7 @@ var center = [width / 2, height / 2];
 function zoomOpening(){
 if (animateZoom){
 		d3.select("#container").style("pointer-events","none");
-	svg.call(transition, p0, p1);
+	svg.call(transition, p0, p1); //SKIP AHEAD
 }
 if (animateZoom==false){
 skipIntro2();
@@ -2286,9 +2287,9 @@ else{
 		$('#introNav2').show().on("click", function(){
       				$('#introNav2').slideUp();
       	svg.call(transition,p6half,p6);
-		$(".introZoom").animate({
-			left: "539px",
-		});
+		// $(".introZoom").animate({
+		// 	left: "539px",
+		// });
       })
 	}
      
@@ -2296,7 +2297,9 @@ else{
 }
 
 if(end==p6){
-
+		$(".introZoom").animate({
+			left: "539px",
+		});
 		$("#introNav2").animate({
 			top:"201px",
 			left: "744px",
@@ -2402,7 +2405,7 @@ top:"300px",
 
 });
 
-$('#introNav2').delay(1000).animate({
+$('#introNav2').delay(2000).animate({
 	left:"296px",
 	top:"350px",
 })
@@ -2444,7 +2447,7 @@ for (i=0; i<subjCode.length; i++){
 }
 		d3.select(".surroundingPoints"+specialSubj1)
 			.transition()
-			.delay(1000)
+			.delay(500)
 			.duration(1000)
 			.attr("y", subjY[specialIndex1]-10)
 			.attr("height",14)
@@ -2456,8 +2459,8 @@ for (i=0; i<subjCode.length; i++){
 
 		d3.select(".surroundingPoints"+specialSubj2)
 			.transition()
-			.delay(1000)
-			.duration(1000)
+			.delay(500)
+			.duration(2000)
 			.attr("y", subjY[specialIndex2]-10)
 			.attr("height",14)
 			.attr("stroke", colors[subjLoc[specialIndex2]])
@@ -2465,23 +2468,30 @@ for (i=0; i<subjCode.length; i++){
 			runLines(specialSubj2);
 			checkedIt.push(specialSubj2);
 			checked(checkedIt);				
+// count=1;
+				// d3.select(".surroundingPoints"+specialSubj3)
+				// 	.transition()
+				// 	.delay(500)
+				// 	.duration(3000)
+				// 	.attr("y", subjY[specialIndex3]-10)
+				// 	.attr("height",14)
+				// 	.attr("stroke", colors[subjLoc[specialIndex3]])
+				// 	.each("end",function(){
 
-				d3.select(".surroundingPoints"+specialSubj3)
-					.transition()
-					.delay(2000)
-					.duration(1000)
-					.attr("y", subjY[specialIndex3]-10)
-					.attr("height",14)
-					.attr("stroke", colors[subjLoc[specialIndex3]])
-					.each("end",function(){
-				runLines(specialSubj3);
-				checkedIt.push(specialSubj3);
-				checked(checkedIt);
+				// runLines(specialSubj3);
+				// checkedIt.push(specialSubj3);
+				// checked(checkedIt);
+
+
+
+
 						//open books column
   	$("#intro12").hide("fast"); //SUBJECTS
+				// books("5,12,19",thisCircle);
+				// otherBooks(checkedIt,thisCircle);
 
 $(".introZoom").delay(2000).animate({
-left:"81%",
+left:"68%",
 top:"100px",
 });
 
@@ -2494,7 +2504,7 @@ d3.select("#container").style("pointer-events","none");
   d3.select("#container")
 .transition()
 	.style("opacity", .5)
-	.each("end",function(){
+	// .each("end",function(){
 	  		// $("#endIntro").show();
 	// 		$('#endIntro').on("click",function(){
 	// 			  		$("#endIntro").hide();
@@ -2502,9 +2512,9 @@ d3.select("#container").style("pointer-events","none");
 
 	// 	skipIntro();
 	// })	
-	})
+	// })
 
-		})
+		// })
 
 					})	
 			})		
@@ -2521,104 +2531,104 @@ d3.select("#container").style("pointer-events","none");
 }
 }
 
-function preDoLines(){
-console.log("predolines")
-// d3.select("#container").pointer-events("none")
-// d3.selectAll("line.hey"+specialCirc)
-// 	.transition()
-// 	.delay(1200)
-// 	.attr("x2",0)
-// 	.attr("y2",0)
-// 	.each("end",function(){
-//   	$("#intro12").show("fast"); //SUBJECTS		
-// 	})
-// d3.selectAll(".mouseoverText").remove();
-// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
-// 	console.log("yes");
+// function preDoLines(){
+// console.log("predolines")
+// // d3.select("#container").pointer-events("none")
+// // d3.selectAll("line.hey"+specialCirc)
+// // 	.transition()
+// // 	.delay(1200)
+// // 	.attr("x2",0)
+// // 	.attr("y2",0)
+// // 	.each("end",function(){
+// //   	$("#intro12").show("fast"); //SUBJECTS		
+// // 	})
+// // d3.selectAll(".mouseoverText").remove();
+// // if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
+// // 	console.log("yes");
+// // }
+
+
+// d3.select("circle.inCircle"+specialCirc)
+//   	.transition()
+//   	.duration(500)
+//   	.attr("opacity",".2")
+//   	.each("end",function(){
+
+// ///////////////////first subject
+
+// //SELECT ONE SUBJECT "CLICK IT"
+
+// 			matching = 0;
+// // if(calcX.length>connDataLength-1){
+// for (i=0; i<subjCode.length; i++){ 
+// 	if (subjCode[i]==specialSubj1){ 
+// 		specialIndex1 = i; 
+// 	}
+// 	if (subjCode[i]==specialSubj2){ 
+// 		specialIndex2 = i; 
+// 	}
+// 	if (subjCode[i]==specialSubj3){ 
+// 		specialIndex3 = i; 
+// 	}
 // }
-
-
-d3.select("circle.inCircle"+specialCirc)
-  	.transition()
-  	.duration(500)
-  	.attr("opacity",".2")
-  	.each("end",function(){
-
-///////////////////first subject
-
-//SELECT ONE SUBJECT "CLICK IT"
-
-			matching = 0;
-// if(calcX.length>connDataLength-1){
-for (i=0; i<subjCode.length; i++){ 
-	if (subjCode[i]==specialSubj1){ 
-		specialIndex1 = i; 
-	}
-	if (subjCode[i]==specialSubj2){ 
-		specialIndex2 = i; 
-	}
-	if (subjCode[i]==specialSubj3){ 
-		specialIndex3 = i; 
-	}
-}
-		d3.select(".surroundingPoints"+specialSubj1)
-			.transition()
-			// .delay(500)
-			.duration(1000)
-			.attr("y", subjY[specialIndex1]-10)
-			.attr("height",14)
-			.attr("stroke", colors[subjLoc[specialIndex1]])
-			.each("end",function(){
-			runLines(specialSubj1);
-			checkedIt.push(specialSubj1);
-			checked(checkedIt);				
-		// 	})
+// 		d3.select(".surroundingPoints"+specialSubj1)
+// 			.transition()
+// 			// .delay(500)
+// 			.duration(1000)
+// 			.attr("y", subjY[specialIndex1]-10)
+// 			.attr("height",14)
+// 			.attr("stroke", colors[subjLoc[specialIndex1]])
+// 			.each("end",function(){
+// 			runLines(specialSubj1);
+// 			checkedIt.push(specialSubj1);
+// 			checked(checkedIt);				
+// 		// 	})
 
 
 
-		// .each("end",function(){
-		d3.select(".surroundingPoints"+specialSubj2)
-			.transition()
-			.delay(1000)
-			.duration(500)
-			.attr("y", subjY[specialIndex2]-10)
-			.attr("height",14)
-			.attr("stroke", colors[subjLoc[specialIndex2]])
-			.each("end",function(){
-			runLines(specialSubj2);
-			checkedIt.push(specialSubj2);
-			checked(checkedIt);				
-			// })	
+// 		// .each("end",function(){
+// 		d3.select(".surroundingPoints"+specialSubj2)
+// 			.transition()
+// 			.delay(1000)
+// 			.duration(500)
+// 			.attr("y", subjY[specialIndex2]-10)
+// 			.attr("height",14)
+// 			.attr("stroke", colors[subjLoc[specialIndex2]])
+// 			.each("end",function(){
+// 			runLines(specialSubj2);
+// 			checkedIt.push(specialSubj2);
+// 			checked(checkedIt);				
+// 			// })	
 
 
-			// //CHECK THE ADJOINING LINES
-			// .each("end",function(){
-				d3.select(".surroundingPoints"+specialSubj3)
-					.transition()
-					.delay(3000)
-					.duration(500)
-					.attr("y", subjY[specialIndex3]-10)
-					.attr("height",14)
-					.attr("stroke", colors[subjLoc[specialIndex3]])
-					.each("end",function(){
-				runLines(specialSubj3);
-				checkedIt.push(specialSubj3);
-				checked(checkedIt);
-				// d3.select()
-		d3.select(".surroundingPoints"+specialSubj1)
-  				.transition()
-  				.duration(1000)
-  				.attr("opacity",".9")
-  				.each("end",function(){
-  							d3.select("g").transition().attr("opacity",1)
-  					// clearEverything();
-					})
-				})
-		})
-		// }
-		})
-})
-}
+// 			// //CHECK THE ADJOINING LINES
+// 			// .each("end",function(){
+// 				d3.select(".surroundingPoints"+specialSubj3)
+// 					.transition()
+// 					.delay(3000)
+// 					.duration(500)
+// 					.attr("y", subjY[specialIndex3]-10)
+// 					.attr("height",14)
+// 					.attr("stroke", colors[subjLoc[specialIndex3]])
+// 					.each("end",function(){
+// 				runLines(specialSubj3);
+// 				checkedIt.push(specialSubj3);
+// 				checked(checkedIt);
+// 				// d3.select()
+// 		d3.select(".surroundingPoints"+specialSubj1)
+//   				.transition()
+//   				.duration(1000)
+//   				.attr("opacity",".9")
+//   				.each("end",function(){
+//   							d3.select("g").transition().attr("opacity",1)
+//   					// clearEverything();
+// 					})
+// 				})
+// 		})
+// 		// }
+// 		})
+// })
+// }
 	// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
 	// 	console.log("yes")
 	// 	d3.select("g").transition().attr("opacity",1)
