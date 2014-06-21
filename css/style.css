@@ -188,6 +188,9 @@ margin-top: 7.4em;
 	/*cursor: pointer;*/
 
 }
+#about2 p{
+	background-color: white;
+	}
 #clearAll{
 /*		position:fixed;
 	font-size: 10px;
@@ -308,11 +311,13 @@ width: 240px;
 display:none;
 }
 
+
+
 .intro{
 position: absolute;
 z-index: 2000;
 color:rgba(65, 63, 63, 1);
-font-size: 14px;
+font-size: 12px;
 line-height: 18px;
 border: 1px solid rgba(65, 63, 63, 1);
 width: 350px;

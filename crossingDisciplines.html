@@ -54,7 +54,7 @@
 		<div id="skip">Enter</div>
 
 <div class="center">
-		<div id="skip2">Skip Intro</div>
+		<div id="skip2">Exit Guide</div>
 </div>
 	<div class="intro"> 
 
@@ -62,7 +62,7 @@
 	<div id="intro1" style="display: none; opacity: 0;">
 	</div>
 	<div id="intro2" style="display: none; opacity: 0;">
-				<p><b>Crossing Disciplines</b> is a tool to explore the Columbia Library's books that are at the intersection of two or more disciplines.</p><p>Click on two or more subjects around the ring - the top 25 most interdisciplinary subjects in the library - </br><b>Or</b> mouseover and click on a small inner circle that represents a collection of connected books to reveal relevant books.</p>
+				<p><b>Crossing Disciplines</b> is a tool to explore the Columbia Library's books that are at the intersection of two or more disciplines.</p><p>Click two or more subjects around the ring - the top 25 most interdisciplinary subjects in the library - </p><p><b>Or</b> mouseover inner circles to see their subject connections - click one to reveal its collection of connected books.</p>
 	<div id="introNav">
 		<img src="forwardNav.png" width="15" height="15">
 	</div>
@@ -137,7 +137,7 @@
 
 <p>Jen Lowe, Data Visualization and Data Analysis</p>
 
-<p>Annelie Berner, Application and Design Development, D3 Progamming.</p>
+<p>  <a href="annelieberner.com">Annelie Berner</a>, Application and Design Development, D3 Progamming.</p>
 
 <p>Columbia Library</p>
 
@@ -145,13 +145,20 @@
 
 </div>
 <div id="about2">
-	<b>"Claims etc"</b> encompasses five subjects: Legislative Amendments, Military pensions, United States, and Claims.
-<div class="clickZoom">Click here for a guided explanation of the graphic</div>
+	<b>Subjects:</b>
+	<p>Represented subjects are the 25 most interdisciplinary in the Columbia Library. They are arranged around the ring according to frequency - where Claims etc. has the highest frequency of connected books.</p>
+	*Claims encompasses five subjects: Legislative Amendments, Military pensions, United States, and Claims.
+	<b><p>Book Circles:</p></b>
+	<p>Each circle represents a collection of books related to a unique combination of subjects - for example, Art, Architecture and Science have 1 book in common - the circle that represents this intersection is on the tier of circles with 3 connections - </p>
+	<p>Each circle's diameter is scaled to how many books are in its "collection" - </p>
+	<p>The inner glyph shows the direction of the subjects it is related to - mouseover and the glyph will extend to touch those specific subjects. </p>
+<div class="clickZoom"><b>Click here</b> for a guided explanation of the graphic</div>
 
 </div>
 <div id="reset">RESET</div>
 
 <script type = "text/javascript">
+		loadBooks();
 
 var colors = 
 ["#FFDAA0","#FFDAA0",
@@ -235,25 +242,25 @@ d3.select("#intro2")
 // d3.select("#container").transition().style("opacity", 0.4);
 			// preDoLines();
 		}
-	})
+	});
 
 
 $('#skip').fadeIn("slow");
 var countProgress = 0;
 
 $('#skip').on("click",function(){
-d3.selectAll("#intro1, #intro2,.intro").transition().style("opacity", 0.0).style("display", "none");
+	clearEverything();
+d3.selectAll("#intro2,.intro").transition().style("opacity", 0.0).style("display", "none");
 $('#skip').fadeOut("fast");	
 d3.select("#container").transition().style("opacity", 1);
+		d3.select("g").transition().attr("opacity",1)
+
 // .style("pointer-events","auto");
 
 
 })
 
 
-$('#skip2').on("click",function(){
-		skipIntro2();
-})
 
 $('.clickZoom').on("click",function(){
 	clearEverything();
@@ -282,6 +289,11 @@ $(".introZoom").animate({
 		})
 		})
 
+$('#skip2').on("click",function(){
+	animateZoom = false;
+		skipIntro2();
+})
+
 //NEXT THING IS CLICKING TO GET TO THE BOOKS HTML LINK
 function skipIntro(){
 	clearEverything();
@@ -294,11 +306,8 @@ function skipIntro(){
 				d3.select("#container").style("pointer-events","auto");
 }
 function skipIntro2(){
-	clearEverything();
-		animateZoom = false;
-
 			d3.select("#container").transition().style("opacity", 1.0);
-		d3.selectAll("#intro1, #intro2, #intro3, #intro4, #intro4half, #intro5, #intro6, #intro7, #intro8, #intro8half,#intro9, #intro10, #intro11, #intro12, #intro13, #introNav, #introNav2, .intro, .introZoom").transition().style("opacity", 0.0).style("display", "none");
+		d3.selectAll("#intro1, #intro2, #intro3, #intro4, #intro4half, #intro5, #intro6, #intro7, #intro8, #intro8half,#intro9, #intro10, #intro11, #intro12, #intro13, #introNav, #introNav2, .intro, .introZoom").transition().style("display", "none");
 
 		$('#skip2').fadeOut("slow");
 				d3.select("#container").style("pointer-events","auto");
@@ -306,8 +315,16 @@ function skipIntro2(){
 for (i=0; i<conn_levels; i++){
 d3.selectAll(".ringCircle"+conn_levels[i]).transition().attr("stroke-width",1)
 }
-}
+	clearEverything();
+			 $("#introNav2").hide();
 
+		animateZoom = false;
+
+
+}
+if(animateZoom==false){
+		 $("#introNav2").hide();
+}
 
 
 var svg = d3.select("#container")
@@ -376,7 +393,6 @@ function resetZoom(){
 };
 
 
-loadBooks();
 
 var subjX=[];
 var subjY=[];
@@ -729,10 +745,12 @@ var ready = 0;
 var connDataLength;
 firstVariable();
 function firstVariable(){
+
 	d3.tsv("connectionfreqcodes_top25.txt", function(error, cData) {
 		connDataLength = cData.length;
 	})
 }
+
 ////PROBLEM OF GETTING THIS VARIABLE BEFORE RUNNING OTHER FUNCTIONS
 firstLoadVar = setInterval(function(){ 
 	if (connDataLength>0){
@@ -755,7 +773,7 @@ firstLoadVar = setInterval(function(){
 function runOnce(){
 	runInnerCircles();
 	runOuterCircles();
-	// preDoLines();
+
 	}
 
 var countLittleCircle = 0;
@@ -864,14 +882,25 @@ var inCircle = vis.selectAll("inCircle")
 		littleCircIndex = i;
 
 		books(d.codeName,i); 
+
+		// d3.select("#container")
+		// .on("click", function(){
+		// 	d3.select("#container")
+
+		// 			.transition()
+		// 	// .style("pointer-events","none")
+		// // d3.select("#hideContainer")
+		// .style("opacity", "1");			
+		// })
+
+
+
 	}
 	});
 
 
 makeGlyph();    
-if(firstLoad>400){
-	preDoLines();
-}
+
 // $('#container').click(function(d,i) {
 // d3.select("#container").transition().style("opacity", 1);
 // console.log("clicked container")
@@ -949,7 +978,14 @@ function newFunction(){
 	}
 	
 }
-
+// console.log("hey")
+// if(firstLoad>300){
+// 		console.log(codeSorted.length+"codesorted")
+// 	// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
+// 		// console.log("predolines")
+// 	preDoLines();
+// // }
+// }
 var count = 0;
 
 var theseNums = [];
@@ -1279,7 +1315,14 @@ var newG = vis.selectAll("linesOut")
 }
 
 
-
+// console.log("hey")
+// if(firstLoad>300){
+// 		console.log(codeSorted.length+"codesorted")
+// 	// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
+// 		// console.log("predolines")
+// 	preDoLines();
+// // }
+// }
 //this is for matched lines
 var newG;
 function checkedIn(arrayOfSubjs, index){
@@ -1581,6 +1624,8 @@ var dividedCodes = [];
 var saveId = [];
 
 function loadBooks(){
+		// console.log(manyBooks.length+codeSorted.length+manyIds.length+"hey");
+
 d3.tsv("all_id_codes_title_top25.txt", function(error, data) {
 for (j=0; j<data.length; j++){
 	manyBooks.push(data[j].title);
@@ -1593,7 +1638,10 @@ for (i=0; i<manyCodes.length; i++){
 for (j=0; j<dividedCodes.length; j++){
 	codeSorted.push((dividedCodes[j].sort(function(a, b){return a-b})).toString());
 }
+
 })
+	// console.log(manyBooks.length+codeSorted.length+manyIds.length+"hey");
+
 }
 
 var testing;
@@ -1606,6 +1654,8 @@ var bookColors = [];
 var manyBookColors = {};
 var checkAgainst;
 function otherBooks(checkedTo, thisCircle){
+	console.log(manyBooks.length+" "+codeSorted.length+" "+manyIds.length)
+
 console.log("otherBooks"+checkedTo+"i"+thisCircle);
 whichBooks.length = 0;
 checkAgainst = thisCircle;
@@ -1621,18 +1671,23 @@ for (i=0; i<checkedTo.length; i++){
 // booksChecked = checkedIt;
 
 booksChecked.sort(function(a, b){return a-b});
-		console.log(booksChecked+"books checked sorted")
-
+		// console.log(booksChecked+"books checked sorted")
+		// console.log(manyBooks.length+codeSorted.length+manyIds.length+"hey");
 for (j=0; j<booksChecked.length; j++){
 		if (booksChecked[j]>4){
 			overFour = 1;
+			// console.log("yes")
+			// console.log(booksChecked[j]+"at j over four")
 		}
 	}
 if (overFour==1){
 for (i=0; i<codeSorted.length; i++){
 	if (codeSorted[i]==booksChecked.toString()){
+		// console.log(manyBooks.length+codeSorted.length+manyIds.length+"hey");
 		whichBooks.push(manyBooks[i]);
 		saveId.push(manyIds[i]);
+// console.log(whichBooks.length+"in other books")
+
 	}
 }
 }
@@ -1668,7 +1723,7 @@ if (booksChecked[j]==3){
 	}		
 	}
 }
-booksChecked.length = 0;
+// booksChecked.length = 0;
 
 updateHoverbox(whichBooks, saveId);
 console.log(whichBooks.length)
@@ -1887,7 +1942,9 @@ $("#clearAll").on("click", function(){
 clearEverything();
 })
 function clearEverything(){
-	console.log("reset map")
+			 $("#introNav2").hide();
+
+	console.log("clear everything")
    vis.attr("transform",
       "translate("+ 0 + "," + 0 + ")"
       + " scale(" + initialZoom + ")");
@@ -2040,7 +2097,7 @@ if (animateZoom){
 	svg.call(transition, p0, p1);
 }
 if (animateZoom==false){
-skipIntro();
+skipIntro2();
 	resetZoom();
 }
 }
@@ -2049,14 +2106,19 @@ skipIntro();
 
 function transition(svg, start, end) {
 if (animateZoom==false){
-skipIntro();
+		// console.log(animateZoom+"animateZoom")
+skipIntro2();
 resetZoom();
 }
 
 var countZoom = 0;
 
 if (animateZoom){
-
+	// console.log(animateZoom+"animateZoom")
+if (animateZoom==false){
+skipIntro2();
+resetZoom();
+}
 var  i = d3.interpolateZoom(start, end);
 
   vis
@@ -2081,10 +2143,16 @@ if (end==p1){
 	.duration(1000)
 	.attr("stroke-width",1)
     .each("end", function(){
+ if (animateZoom==false){
+ 		clearEverything();
+ 	$('#introNav2').hide()
+}
+else{
 $('#introNav2').show().on("click", function(){
       	$('#introNav2').slideUp();
       	svg.call(transition,p1,p2);
       })
+}
      })
  }
 if(end==p2){
@@ -2306,7 +2374,7 @@ d3.selectAll("line.hey"+specialCirc)
 	})
 d3.select("circle.inCircle"+specialCirc)
   	.transition()
-  	.duration(1000)
+  	.duration(300)
   	.attr("opacity",".1")
   	.each("end",function(){
 
@@ -2330,7 +2398,7 @@ for (i=0; i<subjCode.length; i++){
 		d3.select(".surroundingPoints"+specialSubj1)
 			.transition()
 			.delay(1000)
-			.duration(2000)
+			.duration(1000)
 			.attr("y", subjY[specialIndex1]-10)
 			.attr("height",14)
 			.attr("stroke", colors[subjLoc[specialIndex1]])
@@ -2342,7 +2410,7 @@ for (i=0; i<subjCode.length; i++){
 		d3.select(".surroundingPoints"+specialSubj2)
 			.transition()
 			.delay(1000)
-			.duration(2000)
+			.duration(1000)
 			.attr("y", subjY[specialIndex2]-10)
 			.attr("height",14)
 			.attr("stroke", colors[subjLoc[specialIndex2]])
@@ -2353,7 +2421,7 @@ for (i=0; i<subjCode.length; i++){
 
 				d3.select(".surroundingPoints"+specialSubj3)
 					.transition()
-					.delay(1000)
+					.delay(2000)
 					.duration(1000)
 					.attr("y", subjY[specialIndex3]-10)
 					.attr("height",14)
@@ -2380,13 +2448,13 @@ d3.select("#container").style("pointer-events","none");
 .transition()
 	.style("opacity", .5)
 	.each("end",function(){
-	  		$("#endIntro").show();
-			$('#endIntro').on("click",function(){
-				  		$("#endIntro").hide();
-				  		$("#skip2").hide();
+	  		// $("#endIntro").show();
+	// 		$('#endIntro').on("click",function(){
+	// 			  		$("#endIntro").hide();
+	// 			  		$("#skip2").hide();
 
-		skipIntro();
-	})	
+	// 	skipIntro();
+	// })	
 	})
 
 		})
@@ -2418,9 +2486,14 @@ console.log("predolines")
 //   	$("#intro12").show("fast"); //SUBJECTS		
 // 	})
 // d3.selectAll(".mouseoverText").remove();
+// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
+// 	console.log("yes");
+// }
+
+
 d3.select("circle.inCircle"+specialCirc)
   	.transition()
-  	.duration(1000)
+  	.duration(500)
   	.attr("opacity",".2")
   	.each("end",function(){
 
@@ -2443,7 +2516,7 @@ for (i=0; i<subjCode.length; i++){
 }
 		d3.select(".surroundingPoints"+specialSubj1)
 			.transition()
-			.delay(500)
+			// .delay(500)
 			.duration(1000)
 			.attr("y", subjY[specialIndex1]-10)
 			.attr("height",14)
@@ -2475,8 +2548,8 @@ for (i=0; i<subjCode.length; i++){
 			// .each("end",function(){
 				d3.select(".surroundingPoints"+specialSubj3)
 					.transition()
-					.delay(2000)
-					.duration(1000)
+					.delay(3000)
+					.duration(500)
 					.attr("y", subjY[specialIndex3]-10)
 					.attr("height",14)
 					.attr("stroke", colors[subjLoc[specialIndex3]])
@@ -2491,7 +2564,7 @@ for (i=0; i<subjCode.length; i++){
   				.attr("opacity",".9")
   				.each("end",function(){
   							d3.select("g").transition().attr("opacity",1)
-  					clearEverything();
+  					// clearEverything();
 					})
 				})
 		})
@@ -2499,7 +2572,13 @@ for (i=0; i<subjCode.length; i++){
 		})
 })
 }
-
+	// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
+	// 	console.log("yes")
+	// 	d3.select("g").transition().attr("opacity",1)
+	// }
+	// else{
+	// 	d3.select("g").transition().attr("opacity",.5)		
+	// }
 </script>
 
 </body>
