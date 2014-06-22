@@ -13,6 +13,29 @@ body{
     font-weight: 100;
     src: local('Gotham-Light'), local('Gotham-Light'), url(Gotham-Light.otf) format('truetype');
 }
+.listBooks:hover{
+	color: black;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #reset{
 position: fixed;
@@ -225,8 +248,8 @@ left:544px;
 padding: 5px;
 width: 1em;
 border-bottom: 1px darkgray solid;
-margin-left:-8px;
-margin-top:-4px;
+/*margin-left:-8px;
+margin-top:-4px;*/
 }
 #backNav:hover{
     background-color: rgba(65, 63, 63, 1);
