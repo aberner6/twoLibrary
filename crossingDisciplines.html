@@ -3,6 +3,9 @@
 <head>
 <link href="css/style.css" rel="stylesheet" type="text/css" /> 
 <link href="css/tipsy.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="js/d3.min.js"></script>
+<script type="text/javascript" src="js/jqueryMain.js"></script>
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -13,10 +16,6 @@
   ga('send', 'pageview');
 
 </script>
-<script type="text/javascript" src="js/d3.min.js"></script>
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script src="js/jquery.hoverIntent.js" type="text/javascript" async></script>
-<script src="js/jquery.tipsy.js" type="text/javascript"></script>
 	</head>
 	<style>
 </style>
@@ -137,7 +136,10 @@
 
 <p>Jen Lowe, Data Visualization and Data Analysis</p>
 
-<p>  <a href="annelieberner.com">Annelie Berner</a>, Application and Design Development, D3 Progamming.</p>
+<p>  <a href="http://www.annelieberner.com" style="
+    color: black;
+    text-decoration: none;
+">Annelie Berner</a>, Application and Design Development, D3 Progamming.</p>
 
 <p>Columbia Library</p>
 
@@ -194,42 +196,22 @@ var TEXT_PAD_X = 5;
 var TEXT_PAD_Y = 2;
 var LEGEND_X_MARGIN = 20;
 var LEGEND_SCALE = 0.0007;
-
 //  Make an array of Subjects
 var subjects;
 //  Make an array of Connections
 var connections;
-
-var bcolor;
-var subtext;
-var hsubtext;
-var concolor;
-var hconcolor;
-var legendconcolor;
-  bcolor = "rgba(0, 0, 0, 255)";
-  concolor = "rgba(210, 210, 210, 50)";
-  hconcolor = "rgba(210, 210, 210, 100)";
-  legendconcolor = "rgba(210, 210, 210, 75)";
-  subtext = "rgba(150, 150, 150, 255)";
-  hsubtext = "rgba(210, 210, 210, 255)";
 var initialZoom = 1,
 	maxZoom = 10;
 var	windowWidth = window.outerWidth,
 	windowHeight = window.innerHeight;
-
 var boolSelected = 0;
 var showReset = false;
-
-
-var	width = 1440,
+var	width = 1440, //decided to make this constant rather than dynamic to window size and svg
 	height = window.innerHeight;
 var animateZoom = false;
-
 var animateOpening =true;
 
-
-
-d3.select("#container").style("pointer-events","none");
+d3.select("#container").style("pointer-events","none"); //while in intro text, you can't click on anything 
 d3.select("#intro2")
 	.transition()
 	.style("display", "block")
@@ -237,10 +219,8 @@ d3.select("#intro2")
 	.each("end",function(){
 		d3.select("g").transition().attr("opacity",.5)
 		console.log(tigReggib)
-		if (tigReggib>=connDataLength-100){
+		if (tigReggib>=connDataLength-100){ //keep track of how far we have progressed in loading data
 					console.log(tigReggib)
-// d3.select("#container").transition().style("opacity", 0.4);
-			// preDoLines();
 		}
 	});
 
@@ -248,32 +228,26 @@ d3.select("#intro2")
 $('#skip').fadeIn("slow");
 var countProgress = 0;
 
-$('#skip').on("click",function(){
+$('#skip').on("click",function(){ //get out of the intro
 	clearEverything();
-d3.selectAll("#intro2,.intro").transition().style("opacity", 0.0).style("display", "none");
-$('#skip').fadeOut("fast");	
-d3.select("#container").transition().style("opacity", 1);
-		d3.select("g").transition().attr("opacity",1)
-
-// .style("pointer-events","auto");
-
-
+	d3.selectAll("#intro2,.intro").transition().style("opacity", 0.0).style("display", "none");
+	$('#skip').fadeOut("fast");	
+	d3.select("#container").transition().style("opacity", 1);
+	d3.select("g").transition().attr("opacity",1)
 })
 
 
 
-$('.clickZoom').on("click",function(){
+$('.clickZoom').on("click",function(){ //check out the zooming explanation
 	clearEverything();
-d3.select("#container").style("pointer-events","none");
-
-$('#about2').fadeOut("slow");
-$(".introZoom").css("top","250px")
-$(".introZoom").css("width","240px")
-
-// 240px
-$("#introNav2").css("top","252px")
-$("#introNav2").css("left","796px")
-		$("#skip2").show();
+	d3.select("#container").style("pointer-events","none");
+	$('#about2').fadeOut("slow");
+	//have to set these at a constant to return to even though they move through the zooming explanation
+	$(".introZoom").css("top","250px")
+	$(".introZoom").css("width","240px")
+	$("#introNav2").css("top","252px")
+	$("#introNav2").css("left","796px")
+	$("#skip2").show();
 	d3.select("#container")
 		.transition()
 		.duration(1000)
@@ -281,82 +255,73 @@ $("#introNav2").css("left","796px")
 		.each("end",function(){
 		$(".introZoom")
 		.animate().css("opacity",.8).show("fast", function(){
-					$("#intro4").fadeIn("fast", function(){
-					$(".introZoom").animate().css("height","inherit", "left","539px");		
-					});
-$(".introZoom").animate({
-	height:"inherit", 
-	left:"539px"
-});
-			animateZoom = true;
- 			zoomOpening();	
-			})
+			$("#intro4").fadeIn("fast", function(){
+				$(".introZoom").animate().css("height","inherit", "left","539px");		
+			});
+		$(".introZoom").animate({
+			height:"inherit", 
+			left:"539px"
+		});
+		animateZoom = true;
+ 		zoomOpening();	
 		})
-		})
-
-$('#skip2').on("click",function(){
-	animateZoom = false;
-		skipIntro2();
+	})
 })
 
-//NEXT THING IS CLICKING TO GET TO THE BOOKS HTML LINK
+$('#skip2').on("click",function(){ //get out of the zooming intro
+	animateZoom = false;
+	skipIntro2();
+})
+
 function skipIntro(){
-	clearEverything();
-		animateZoom = false;
-
-			d3.select("#container").transition().style("opacity", 1.0);
-		d3.selectAll("#intro1, #intro2, #introNav, .intro").transition().style("opacity", 0.0).style("display", "none");
-
-		$('#skip').fadeOut("slow");
-				d3.select("#container").style("pointer-events","auto");
+clearEverything();
+animateZoom = false;
+d3.select("#container").transition().style("opacity", 1.0);
+d3.selectAll("#intro1, #intro2, #introNav, .intro").transition().style("opacity", 0.0).style("display", "none");
+$('#skip').fadeOut("slow");
+d3.select("#container").style("pointer-events","auto");
 }
+
 function skipIntro2(){
-			d3.select("#container").transition().style("opacity", 1.0);
-		d3.selectAll("#intro1, #intro2, #intro3, #intro4, #intro4half, #intro5, #intro6, #intro7, #intro8, #intro8half,#intro9, #intro10, #intro11, #intro12, #intro13, #introNav, #introNav2, .intro, .introZoom").transition().style("display", "none");
-
-		$('#skip2').fadeOut("slow");
-				d3.select("#container").style("pointer-events","auto");
-		
+d3.select("#container").transition().style("opacity", 1.0);
+d3.selectAll("#intro1, #intro2, #intro3, #intro4, #intro4half, #intro5, #intro6, #intro7, #intro8, #intro8half,#intro9, #intro10, #intro11, #intro12, #intro13, #introNav, #introNav2, .intro, .introZoom").transition().style("display", "none");
+$('#skip2').fadeOut("slow");
+d3.select("#container").style("pointer-events","auto");	
 for (i=0; i<conn_levels; i++){
-d3.selectAll(".ringCircle"+conn_levels[i]).transition().attr("stroke-width",1)
+	d3.selectAll(".ringCircle"+conn_levels[i]).transition().attr("stroke-width",1)
 }
-	clearEverything();
-			 $("#introNav2").hide();
-
-		animateZoom = false;
-
-
+clearEverything();
+$("#introNav2").hide();
+animateZoom = false;
 }
+
 if(animateZoom==false){
-		 $("#introNav2").hide();
+$("#introNav2").hide(); //extra safe proofing to get rid of it as sometimes it would show if skip was called mid transition in zooming times
 }
 
-
-var svg = d3.select("#container")
+var svg = d3.select("#container") //our big main svg
     .append("svg")
 	.attr({
       "width": "100%",
       "height": "100%",
   		});
-      // .call(zoom);
 
-
-var vis = svg
+var vis = svg //for the visualization
     .append('svg:g')
  	.attr("transform",
-      "translate("+ 0 + "," + 0 + ")");
+      "translate("+ 0 + "," + 0 + ")"); 
 
-svg.call(d3.behavior.zoom()
-   	.scale(1.0)
-   	.scaleExtent([initialZoom, maxZoom])
+svg.call(d3.behavior.zoom() //setting up zoom abilities
+   .scale(1.0)
+   .scaleExtent([initialZoom, maxZoom]) 
    .on("zoom", function(){
 		var t = d3.event.translate;
-		var s = d3.event.scale;
-		
+		var s = d3.event.scale;		
 		zoomInOut(t, s);
 	})
-   );
-svg
+);
+
+svg //don't let people zoom in all of these ways - will interrupt other functions of the program
 .on("mousedown.zoom", null)
     .on("touchstart.zoom", null)
     .on("touchmove.zoom", null)
@@ -364,20 +329,20 @@ svg
     .on("touchend.zoom", null);
 
 var zoomInOut = function(t, s) {
+	//showReset so people can reset when things get hard to control on zooms
 if (showReset==true){
-	$('#reset').slideDown( "slow", function() {
-})
+	$('#reset').slideDown("slow");
 }
 if (showReset==false){
-	$('#reset').slideUp( "slow", function() {
-})	
+	$('#reset').slideUp("slow");
 }
 if (s>=initialZoom){
-showReset = true;
+	showReset = true;
 }
 if (s<initialZoom){
 	showReset = false;
 }
+
   vis.attr("transform",
       "translate("+d3.event.translate+ ")"
       + " scale(" + d3.event.scale + ")");
@@ -386,18 +351,13 @@ if (s<initialZoom){
 d3.select("#reset").on("click", resetZoom);
 
 function resetZoom(){
-	//Reset map
-	console.log("reset map")
+console.log("reset viz")
    vis.attr("transform",
       "translate("+ 0 + "," + 0 + ")"
       + " scale(" + initialZoom + ")");
 	showReset = false;
-	console.log(showReset)
-	$('#reset').slideUp( "slow", function() {
-})	
+$('#reset').slideUp("slow");
 };
-
-
 
 var subjX=[];
 var subjY=[];
@@ -406,31 +366,24 @@ var sData = [];
 var subjCode = [];
 var subjTextInside = [];
 var subjLoc = [];
-
 var freqIs=[];
 var item;
-
 var subradius = 325;
 var scaling = 1.1;
-
 var firstLoad = -1;
 var tigReggib = -1;
 var clicked = 0;
-
 var checkedIt = [];
 var wasItSubj;
 var storeClicks = {};
-
-var scienceSubj;
-var womenSubj;
-
-
 var matching = 0;
 var rectClicked = false;
 var wordWidth = [];
+
+//this is to make the ring of subjects 
 function runOuterCircles(){
 d3.tsv("subjects_top25_option1.tsv", function(error, data) {
-var jump = Math.PI*2/data.length; //    float jump = TWO_PI/(float
+var jump = Math.PI*2/data.length; 
 var angle = 0;
 
 var text = vis.selectAll('.subjectText')
@@ -448,18 +401,17 @@ var text = vis.selectAll('.subjectText')
 	.attr("x", function(d,i){ 
 		if (subjX[i]>width/2){
 			$(".subjectText").animate().css('text-align','left');
-
-				return subjX[i]; 	
+			return subjX[i]; 	
 		}
 		else {
 			if (d.subject.length > 11){
-			return subjX[i]-d.subject.length*3-55;			
+				return subjX[i]-d.subject.length*3-55;			
 			}
 			if (d.subject.length<=11 &&d.subject.length>6){
 				return subjX[i]-d.subject.length*3-25;			
 			}
 			else {
-			return subjX[i]-d.subject.length*3-20;				
+				return subjX[i]-d.subject.length*3-20;				
 			}
 		}
 	})
@@ -470,174 +422,153 @@ var text = vis.selectAll('.subjectText')
 		return d.subject; 
 	})
 	.attr("fill", "black")
-
 	.attr("opacity",1)
-
 	.each(function(d) {
-        d.width = this.getBBox().width;
+        d.width = this.getBBox().width; //get width of text box
       })
 	.on("mouseover", function(d){
-
-
-		d3.select(".surroundingPoints"+d.subjCode)
+		d3.select(".surroundingPoints"+d.subjCode) //fill in colors upon beginning interaction
 			.transition()
 			.attr("stroke", colors[d.loc]);
 	})
-
 	.on("click", function(d,i){
 		count=0;
 		var d = this.__data__;
 		console.log(d);
 		wasItSubj = d.subjCode;
-		storeClicks[i] = storeClicks[i] ? storeClicks[i]+1 : 1; //now this is counters
-whichBooks.length = 0;
-booksChecked.length = 0;
-hideBooks();
-		if(storeClicks[i]%2==1){ //if clicked ON
+		storeClicks[i] = storeClicks[i] ? storeClicks[i]+1 : 1; //counting clicks on a subj box
+		//need to clear book list out each time we might add or subtract a subject
+		whichBooks.length = 0;
+		booksChecked.length = 0;
+		hideBooks();
 
+		if(storeClicks[i]%2==1){ //if clicked ON
 			console.log("clicked on"+storeClicks[i]%2)
 			console.log("this is"+i)
-			runLines(d.subjCode);
-			checkedIt.push(d.subjCode);
-			checked(checkedIt);
-		d3.select(".surroundingPoints"+d.subjCode)
+			runLines(d.subjCode); //run lines to all the collections this subject is related to
+			checkedIt.push(d.subjCode); //push subject codes to checkedIt
+			checked(checkedIt); //find connection between these two subjects
+		d3.select(".surroundingPoints"+d.subjCode) //make box around text big or clicked on
 			.transition()
 			.attr("y", subjY[i]-10)
 			.attr("height",14);
 		}
-
 		if(storeClicks[i]%2==0){ //if unselected
-
 			console.log("clicked off"+storeClicks[i]%2)
 			d3.select(".surroundingPoints"+d.subjCode)
 			.transition()
 			.attr("y", subjY[i]+5)
-			.attr("height",.1)
-		//and remove that subject number
+			.attr("height",.1) //make clicked box small again
 			for (c=0; c<checkedIt.length; c++){
-				if (checkedIt[c]==d.subjCode){ // || 2 || 3 || 4
-				checkedIt.splice(c,1);
+				if (checkedIt[c]==d.subjCode){ //if the one you clicked OFF is part of the array
+				checkedIt.splice(c,1); //splice it out of the array you are tracking
 			}
 		}
 bookColors.length = 0;
-
-d3.selectAll("circle.inCircle"+checkedIndex)
+d3.selectAll("circle.inCircle"+checkedIndex) //whichever circle was the intersection, turn it back off
 	.transition()
 	.attr("opacity",.1)
 	.attr("fill","grey");
-d3.selectAll(".checkedLinesOut").remove();
-d3.selectAll(".mouseoverText").remove();
-d3.selectAll(".innerText").remove();
+d3.selectAll(".checkedLinesOut").remove(); //remove the lines that show the special connection
+d3.selectAll(".mouseoverText").remove(); //remove the text about the # books
 
-checked(checkedIt);
-
+checked(checkedIt); //re-show what the special connection is - may still be there if two other subjs still clicked
 removeRunnedLines(d.subjCode);
-
-	}
+}
 });
 
-
+//setting up underlying/underlining rectangles for the subject text
 var surroundingRects = vis.selectAll("surroundingPoints")
 	.data(data)
 	.enter().append("rect")
 	.attr("class", function(d,i){ return "surroundingPoints"+d.subjCode; })
 	.attr("x", function(d,i){
 		if (subjX[i]>width/2){
-				return subjX[i]-5; 	
+			return subjX[i]-5; 	
 		}
 		else {
 			if (d.subject.length > 11){
-			return subjX[i]-d.subject.length*3-58;			
+				return subjX[i]-d.subject.length*3-58;			
 			}
 			if (d.subject.length<=11 &&d.subject.length>6){
 				return subjX[i]-d.subject.length*3-28;			
 			}
 			else {
-			return subjX[i]-d.subject.length*3-23;				
+				return subjX[i]-d.subject.length*3-23;				
 			}
-}
-
+		}
 	})
 	.attr("width", function(d,i){ 
 		wordWidth.push(d.width);
 		if (subjX[i]>width/2){
-				return d.width+11;	
+			return d.width+11;	
 		}
 		else{
-		return d.width+8; //this.getBBox().width+3)
-	}
+			return d.width+8; //this.getBBox().width+3)
+		}
 	})
 	.attr("y", function(d,i){  
-			return height*.5+subradius*Math.sin(jump*(d.loc-1))+5;
+		return height*.5+subradius*Math.sin(jump*(d.loc-1))+5;
 	})
 	.attr("height", .1)
 	.attr("stroke-width","1px")
 	.attr("fill","none")
 	.attr("stroke", function(d,i){
-		return "grey";//colors[d.loc];
+		return "grey";
 	})
-
 
 $('.subjectText').tipsy({ 
 		gravity: 'nw', 
 		html: true, 
 		title: function() {
-		  var d = this.__data__;
+		var d = this.__data__;
 		var newNum = Math.round((d.freq) / 1000);
 		var niceNum = numberWithCommas(newNum)+"k books";  
-		  return niceNum;
-
+			return niceNum;
 		}
 });
 })
 }
-
-
 function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+//functionality for graph section
 var exitGraphsClicked = false;
 $('#graphIcon').click(function(){
-	if (exitGraphsClicked==false){
-	makeGraphsBig();
+if (exitGraphsClicked==false){
+	makeGraphsBig(); //an initial transitional reveal opening
 }
 if (exitGraphsClicked==true){
-	justMakeGraphs();
+	justMakeGraphs(); //a simple change of opacity to reveal
 }
-		d3.select("#graphIcon").transition().style("display","none");	
-		d3.select("#exitGraph").transition().style("display","block")
-
+d3.select("#graphIcon").transition().style("display","none");	
+d3.select("#exitGraph").transition().style("display","block")
 })
-
 $('#exitGraph').click(function(){
-	exitGraphsClicked = true;
-	hideGraphs();
-		d3.select("#exitGraph").transition().style("display","none");	
-		d3.select("#graphIcon").transition().style("display","block");	
+exitGraphsClicked = true;
+hideGraphs();
+d3.select("#exitGraph").transition().style("display","none");	
+d3.select("#graphIcon").transition().style("display","block");	
 })
 
 var mapLittleRect = d3.scale.linear()
 	.domain([0, freqIs.length])
 	.range([700,500]);
-
 var maxFreq = d3.max(freqIs, function(d,i){return d; })
-
 var legendMap = d3.scale.linear()
 	.domain([0, maxFreq])
 	.range([20,500]);
-
 function hideGraphs(){
-	d3.selectAll(".rectsAre, .textsAre")
+d3.selectAll(".rectsAre, .textsAre")
 	.transition()
 	.attr("opacity",0)
 }
-
 function justMakeGraphs(){
-	d3.selectAll(".rectsAre")
+d3.selectAll(".rectsAre")
 	.transition()
 	.attr("opacity",.8)
-	d3.selectAll(".textsAre")
+d3.selectAll(".textsAre")
 	.transition()
 	.attr("opacity",1)
 }
@@ -648,11 +579,10 @@ var secondVis = svg
       "translate("+ 0 + "," + 0 + ")")
 function makeGraphsBig(){
 d3.tsv("subjects_top25_option1.tsv", function(error, data) {
-	var mapRect = d3.scale.linear()
+var mapRect = d3.scale.linear()
 	.domain([0, freqIs.length])
-	.range([680,440]); //not 480
+	.range([680,440]); 
 
-// if (freqIs.length>0){
 var graphRects = secondVis.selectAll("rectsAre")
 	.data(data)
 	.enter()
@@ -663,13 +593,11 @@ var graphRects = secondVis.selectAll("rectsAre")
 	})
 	.attr("y", function(d,i){
 		return 0;
-		// return mapRect(i); //if i want claims on bottom
 	})
 	.attr("width", function(d){
 		return 0;
 	})
 	.attr("height",6)
-	// .attr("fill","lightgray");
 	.attr("fill", function(d,i){
 		return colors[d.loc];
 	})
@@ -690,23 +618,21 @@ var graphText = secondVis.selectAll("textsAre")
 		return d.subject;
 	})
 	.attr("fill","black");
-
-	// if (rectClicked==true){
-	d3.selectAll(".rectsAre")
+//now transition up	
+d3.selectAll(".rectsAre")
 	.transition()
 	.duration(100)
 	.attr("y", function(d,i){
-		return mapRect(i); //if i want claims on bottom
+		return mapRect(i);
 	});
-	d3.selectAll(".rectsAre")
+d3.selectAll(".rectsAre")
 	.transition()
 	.duration(200)
 	.delay(300)
 	.attr("width", function(d,i){
 		return d.freq*LEGEND_SCALE;
 	});
-
-	d3.selectAll(".textsAre")
+d3.selectAll(".textsAre")
 	.transition()
 	.delay(800)
 	.attr("x", function(d){
@@ -715,23 +641,12 @@ var graphText = secondVis.selectAll("textsAre")
 	.attr("y", function(d,i){
 		return mapRect(i)+5;
 	})
-
-	// }
 })
 }
-//Move SVG elements to the end of their container,
-//so they appear "on top".
-var moveToFront = function() { 
-	this.parentNode.appendChild(this); 
-}
-
-
 var bigBooks = [];
 var saveBigIds = [];
 var incomingBig;
 var splitBig;
-
-
 var angles = [];
 var first = [];
 var r = [];
@@ -746,59 +661,54 @@ var myVar;
 var firstLoadVar;
 var secondLoadVar;
 var ready = 0;
-
 var connDataLength;
+//this gets called as soon as the page loads...
 firstVariable();
 function firstVariable(){
-
-	d3.tsv("connectionfreqcodes_top25.txt", function(error, cData) {
-		connDataLength = cData.length;
-	})
+d3.tsv("connectionfreqcodes_top25.txt", function(error, cData) {
+	connDataLength = cData.length;
+})
 }
-
 ////PROBLEM OF GETTING THIS VARIABLE BEFORE RUNNING OTHER FUNCTIONS
 firstLoadVar = setInterval(function(){ 
-	if (connDataLength>0){
+if (connDataLength>0){
 	if (firstLoad<connDataLength-1){
-	d3.tsv("connectionfreqcodes_top25.txt", function(error, cData) {
-	firstLoad++; 
-	if (firstLoad>=0){
-		// console.log(firstLoad);
-	storeInnerSubjs(cData[firstLoad].codeName, firstLoad);		
-	}
-	})
+		d3.tsv("connectionfreqcodes_top25.txt", function(error, cData) {
+		firstLoad++; 
+		if (firstLoad>=0){
+			storeInnerSubjs(cData[firstLoad].codeName, firstLoad); //store inner subjects is the loading function for the big data		
+		}
+		})
 	}
 	else {
-	runOnce();
-	clearInterval(firstLoadVar);
+	runOnce(); //once you have loaded everything in, then run the visual elements
+	clearInterval(firstLoadVar); //and stop loading stuff in
 	}
 }
 },1);	
 
 function runOnce(){
-	runInnerCircles();
-	runOuterCircles();
-
-	}
+runInnerCircles(); //inner collection
+runOuterCircles(); //outer subjects
+}
 
 var countLittleCircle = 0;
 var littleCircIndex;
 var littleCircChecked = [];
 var circleFreq = [];
 function runInnerCircles(){
-
 d3.tsv("connectionfreqcodes_top25.txt", function(error, cData) {
 for (i = 0; i < cData.length;i++) {
 	allCodes.push(cData[i].codeName);
-	angles.push(holdAngles[i]);
-	radiusIs.push(radius_levels[storeLengths[i]]);
+	angles.push(holdAngles[i]); //created below
+	radiusIs.push(radius_levels[storeLengths[i]]); //created below
 	circleFreq.push(cData[i].freq);
 }
 
 for (i=0; i<allCodes.length; i++){
 	r.push(allCodes[i].split(","));
 }
-
+//light circles to further articulate which ring of connections the circles are on top of
 var ringCircle = vis.selectAll("ringCircle")
 	.data(conn_levels)
 	.enter()
@@ -813,7 +723,7 @@ var ringCircle = vis.selectAll("ringCircle")
 	.attr("opacity",.1)
 	.attr("stroke","lightgray")
 	.attr("stroke-width",.5)
-
+//each circle represents a collection of books related to a unique set of subjects...
 var inCircle = vis.selectAll("inCircle")
 	.data(cData)
 	.enter().append("circle")
@@ -824,7 +734,7 @@ var inCircle = vis.selectAll("inCircle")
 		return "inCircle"+i; 
 	})
 	.attr("cx", function(d,i){
-		return width*0.5+scaling*radiusIs[i]*Math.cos(angles[i]);
+		return width*0.5+scaling*radiusIs[i]*Math.cos(angles[i]); //positionining 
 	})
 	.attr("cy", function(d,i){ 
 		return height*0.5+scaling*radiusIs[i]*Math.sin(angles[i]);
@@ -840,102 +750,72 @@ var inCircle = vis.selectAll("inCircle")
 		d3.select(this)
 		.attr("opacity", .9);
 		index = i;
-		allOut(d.codeName, index); //FIX WHAT THING IS NOW
+		allOut(d.codeName, index); //when you mouseover, shoot lines out to related subjects
 		})
 	.on("mouseout", function(d,i){
 		console.log(countLittleCircle%2==0)
 		if(countLittleCircle%2==0){
 		d3.select(this)
 		.attr("opacity",.1)
-		removeOutwardLines(d.codeName, i); //FIX CODENAME
+		removeOutwardLines(d.codeName, i); 
 		}
 	})
 
 	.on("click", function(d,i){
 		console.log("clicked little circle for books")
-
 		console.log(d.codeName+"d.codeName on click of little circle")
 		countLittleCircle++;
 		console.log(countLittleCircle%2+"countLittleCircle")
 		littleCircChecked.length=0;
 
-	if (countLittleCircle%2==0){
-
+	if (countLittleCircle%2==0){ //just in case it's been clicked "OFF"
 		d3.select(this)
 		.transition()
 		.attr("fill","grey")
 		.attr("opacity",.1)
 		removeOutwardLines(d.codeName, i); //FIX CODENAME
 		d3.select("#container").transition().style("opacity", 1);
-
 		d3.selectAll(".mouseoverText").remove();	
 		hideBooks();			
 	}
-	else if (countLittleCircle%2==1){
+	else if (countLittleCircle%2==1){ //clicked ON
 		d3.select("#container")
 		.style("pointer-events","none")
-		// d3.select("#hideContainer")
 		.transition()
 		.style("opacity", ".3");
-		// d3.select()
 
 		d3.select(this)
 		.transition()
 		.attr("fill","yellow");
-		// .style("z-index",1001)
 		littleCircChecked.push(d.codeName);
 		littleCircIndex = i;
 
 		books(d.codeName,i); 
-
-		// d3.select("#container")
-		// .on("click", function(){
-		// 	d3.select("#container")
-
-		// 			.transition()
-		// 	// .style("pointer-events","none")
-		// // d3.select("#hideContainer")
-		// .style("opacity", "1");			
-		// })
-
-
-
 	}
-	});
-
-
+});
 makeGlyph();    
-
-// $('#container').click(function(d,i) {
-// d3.select("#container").transition().style("opacity", 1);
-// console.log("clicked container")
-// d3.selectAll("inCircle"+i)
-// 		.transition()
-// 		.attr("fill","grey")
-// 		d3.select("#booksColumn.selected").classed("selected", false);	
-// 		d3.selectAll(".mouseoverText").remove();	
-// 		hideBooks();
-// });
 function makeGlyph(){
 myVar = setInterval(function(){ 
 if (tigReggib<connDataLength-1){
 	tigReggib++; 
-	runLinesOut(cData[tigReggib].codeName, tigReggib); //FIX CODENAME
+	runLinesOut(cData[tigReggib].codeName, tigReggib); //run lines out and in to make the glyph one by one with tigreggib...
 }
 else {}
 
 },1);
 if (tigReggib>=connDataLength-1){
-	clearInterval(myVar);
+	clearInterval(myVar); //stop once you've gone through full data set
 }
 }
 })
-		processBigs1("1,1",0);
-		processBigs1("1,21",1);
-		processBigs1("1,21,2",2);
-		processBigs1("5,20",3);
-		processBigs1("5,12",4);
-			processBigs1("9,7",5);
+//THIS IS A CLUDGY WAY TO DEAL WITH THE PARTICULARLY HUGE COLLECTIONS OF BOOKS - 
+//SENDING THEM TO GET PREPROCESSED IN CASE SOMEONE CLICKS ON THEM
+processBigs1("1,1",0);
+processBigs1("1,21",1);
+processBigs1("1,21,2",2);
+processBigs1("5,20",3);
+processBigs1("5,12",4);
+processBigs1("9,7",5);
 }
 
 var thisIs = [];
@@ -945,161 +825,130 @@ var countLengths = {};
 var jumps = {};
 var anglesAre = [];
 var holdAngles = [];
-
 var countIt = 0;
 var thisCircle;
 function storeInnerSubjs(arrayOfSubjs, index){
-
 otherThis = arrayOfSubjs.split(",");
-storeLengths.push(otherThis.length); //now this is "q"
-
-countLengths[otherThis.length] = countLengths[otherThis.length] ? countLengths[otherThis.length]+1 : 1; //now this is counters
-
+storeLengths.push(otherThis.length); //how many subjects a given collection is related to
+countLengths[otherThis.length] = countLengths[otherThis.length] ? countLengths[otherThis.length]+1 : 1; //storing that
 checkLengths(otherThis,index); //here we finish counters array and create the new jumps thing
 }
 var stop;
 function checkLengths(otherThis,index){
 for (i=0; i<MAX_LEVELS; i++){
 	anglesAre[i] = 0;
-
-if (countLengths[i]===undefined){
-	console.log("undefined");
-	countLengths[i] = 0;
-}
-else {}
-	jumps[i]=((Math.PI*2)/countLengths[i]);
+	if (countLengths[i]===undefined){
+		console.log("undefined");
+		countLengths[i] = 0;
+	}
+	else {}
+	jumps[i]=((Math.PI*2)/countLengths[i]); //PLACING CIRCLES ON LEVEL OF CONNECTIONS - count lengths is number of subjects it is related to
 }
 if (index==connDataLength-1){
 	console.log(connDataLength);
-	newFunction();
+	newFunction(); //run the new function if we've prepped the data
 }
 }
 function newFunction(){
-	var onlyThis = 3;
-	console.log(jumps[3]);
-	for (i=0; i<storeLengths.length; i++){
-		anglesAre[storeLengths[i]]+=jumps[storeLengths[i]];
-		holdAngles.push(anglesAre[storeLengths[i]]);
-	}
-	
+var onlyThis = 3;
+console.log(jumps[3]);
+for (i=0; i<storeLengths.length; i++){
+	anglesAre[storeLengths[i]]+=jumps[storeLengths[i]];
+	holdAngles.push(anglesAre[storeLengths[i]]);
+}	
 }
-// console.log("hey")
-// if(firstLoad>300){
-// 		console.log(codeSorted.length+"codesorted")
-// 	// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
-// 		// console.log("predolines")
-// 	preDoLines();
-// // }
-// }
-var count = 0;
 
+var count = 0;
 var theseNums = [];
 var boolUnselect = 0;
 var checkedToString;
 var checkedIndex;
 function checked(checkedIt){
-
 boolUnselect = 1;
-
 theseNums = checkedIt;
-
 var chckdLines = vis.selectAll("checkedLines")
-	.data(r)
+	.data(r) //r is a data set of all codenames split at their commas
 	.enter()
 	.append("l")
 	.attr("class", function(d,i){
 		var newThing = [];
-		for (j=0; j<allCodes[i].length; j++){
-			if (d[j]<5){
+		for (j=0; j<allCodes[i].length; j++){ //for each element of each array of each entry
+			if (d[j]<5){ //if that element is less than five, then push a 1 instead - this is for claims etc.
 				newThing.push(1);
 			}
 			if (d[j]>=5){
-				newThing.push(d[j]);
+				newThing.push(d[j]); //if not, don't worry about it, push the subj code as is
 			}
 		}
-		newThing.sort(function(a, b){return a-b});
+		newThing.sort(function(a, b){return a-b}); //sort it so that it's consistent when we check book subject codes
 		theseNums.sort(function(a, b){return a-b});
-			if(theseNums.toString()==newThing.toString()){
+			if(theseNums.toString()==newThing.toString()){ //if incoming numbers are the same thing as any of our polished new look at the old version of the data (so it used to have a 1234 now it only has a 1, just like theseNums dataset)
 				count = 1;
 				console.log(i+"this is index?");
 				d3.select("circle.inCircle"+i)
 				.transition()
 				.attr("opacity", ".9")
-				.attr("fill","yellow");
+				.attr("fill","yellow"); //let's highlight that circle that is at the connection spot
 				console.log(checkedIt+"and i"+i)
-				checkedIn(checkedIt, i);
+
+				checkedIn(checkedIt, i); //let's draw lines out to the subjects related
+				
 				checkedIndex = i;
 				matching = 1;
-				d3.select("#booksColumn").classed("selected", true);
-		d3.select("#booksColumn.selected").transition().style("display","none");	
-		d3.select("#exit").transition().style("display","block")
-	otherBooks(checkedIt,checkedIndex); 
+				
+				d3.select("#booksColumn").classed("selected", true); //we will have books related
+				d3.select("#booksColumn.selected").transition().style("display","none");	
+				d3.select("#exit").transition().style("display","block")
+		
+				otherBooks(checkedIt,checkedIndex); //send our info over to be prepped for books display
 
-$('#exit').click(function(){
-booksChecked.length = 0;
-			matching = 0;
-
-hideBooks();
-})
+				$('#exit').click(function(){ 
+				booksChecked.length = 0;
+				matching = 0;
+				hideBooks();
+				})
 			}
-
 			else {
-				 count++;
+				count++;
 				d3.select("circle.inCircle"+i)
 				.transition()
 				.attr("fill", "gray")
-				// .attr("opacity",.9);
 			}
-	if (count%allCodes.length==0){
+		if (count%allCodes.length==0){
 		console.log("hiding, removing")
 		d3.select("#booksColumn.selected").classed("selected", false);	
-		d3.selectAll(".innerText").remove();	
-			matching = 0;
+		matching = 0;
 		d3.selectAll(".mouseoverText").remove();	
-		// console.log("hide books")
 		hideBooks();			
-	}
-	else {
+		}
+		else {
 		d3.select("#booksColumn.selected").classed("selected", true);	
-	}
+		}
 		return "checkedLines";
 	})
 }
 
+//when you click the book icon you will get the list of books related to the subjects
 $('#booksColumn').click(function(){
-// d3.select("#inner")
-// .transition()
-// .style("display","none");
-		d3.selectAll(".innerText").remove();	
-
-// d3.selectAll(".innerText")
-// .transition()
-// .style("display","none");
-
 if(littleCircChecked.length==0 && matching==1 || count%allCodes.length>0){
-		d3.select("#booksColumn.selected").transition().style("display","none");	
-		d3.select("#exit").transition().style("display","block")
-	otherBooks(checkedIt,checkedIndex); 
+d3.select("#booksColumn.selected").transition().style("display","none");	
+d3.select("#exit").transition().style("display","block")
+otherBooks(checkedIt,checkedIndex); 
 }
 })
+
 $('#exit').click(function(){
 booksChecked.length = 0;
-
 hideBooks();
-			matching = 0;
-
+matching = 0;
 })
+
 if (matching==1){
 booksChecked.length = 0;
-
 hideBooks();	
 }
-function prepLines(){
-	console.log("prep lines");
-	for (i=0; i<subjCode.length; i++){
-		runLines(subjCode[i]);
-	}
-}
+
+//GOT THIS FAR IN COMMENTING. 6/24
 var linesInG;
 function runLines(passSubjNum){
 console.log(passSubjNum+"running lines");
@@ -1113,7 +962,6 @@ linesInG = vis.selectAll("linesIn")
 		return "translate(" + (calcX[i]) + "," + (calcY[i]) + ")";
 	})
 	.attr("class", function(d,i){
-
 		var newThing = [];
 		for (j=0; j<allCodes[i].length; j++){
 			if (d[j]<5){
@@ -1319,16 +1167,6 @@ var newG = vis.selectAll("linesOut")
 
 }
 
-
-// console.log("hey")
-// if(firstLoad>300){
-// 		console.log(codeSorted.length+"codesorted")
-// 	// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
-// 		// console.log("predolines")
-// 	preDoLines();
-// // }
-// }
-//this is for matched lines
 var newG;
 function checkedIn(arrayOfSubjs, index){
 		d3.select("#booksColumn.selected").transition().style("display","none");	
@@ -1473,19 +1311,7 @@ var mouseText = vis.selectAll("mouseoverText")
 	})
 	// .text(circleFreq[thisCircle]+" books");
 }
-// var howMany = d3.select("#inner")
-// 	.selectAll(".innerText")
-//    .data(checkedIt)
-// 		.enter()
-// 		.append("text")
-// 		.attr("class","innerText")
-// 		////////checked index should change every time right/?????
-// 		.text(circleFreq[i]+" linked books")
-// 		.attr("x",0)
-// 		.attr("y",0);
-// d3.select("#inner")
-// .transition()
-// .style("display","block");
+
 
 
 
@@ -2468,27 +2294,8 @@ for (i=0; i<subjCode.length; i++){
 			runLines(specialSubj2);
 			checkedIt.push(specialSubj2);
 			checked(checkedIt);				
-// count=1;
-				// d3.select(".surroundingPoints"+specialSubj3)
-				// 	.transition()
-				// 	.delay(500)
-				// 	.duration(3000)
-				// 	.attr("y", subjY[specialIndex3]-10)
-				// 	.attr("height",14)
-				// 	.attr("stroke", colors[subjLoc[specialIndex3]])
-				// 	.each("end",function(){
-
-				// runLines(specialSubj3);
-				// checkedIt.push(specialSubj3);
-				// checked(checkedIt);
-
-
-
-
 						//open books column
   	$("#intro12").hide("fast"); //SUBJECTS
-				// books("5,12,19",thisCircle);
-				// otherBooks(checkedIt,thisCircle);
 
 $(".introZoom").delay(2000).animate({
 left:"68%",
@@ -2504,17 +2311,6 @@ d3.select("#container").style("pointer-events","none");
   d3.select("#container")
 .transition()
 	.style("opacity", .5)
-	// .each("end",function(){
-	  		// $("#endIntro").show();
-	// 		$('#endIntro').on("click",function(){
-	// 			  		$("#endIntro").hide();
-	// 			  		$("#skip2").hide();
-
-	// 	skipIntro();
-	// })	
-	// })
-
-		// })
 
 					})	
 			})		
@@ -2531,111 +2327,6 @@ d3.select("#container").style("pointer-events","none");
 }
 }
 
-// function preDoLines(){
-// console.log("predolines")
-// // d3.select("#container").pointer-events("none")
-// // d3.selectAll("line.hey"+specialCirc)
-// // 	.transition()
-// // 	.delay(1200)
-// // 	.attr("x2",0)
-// // 	.attr("y2",0)
-// // 	.each("end",function(){
-// //   	$("#intro12").show("fast"); //SUBJECTS		
-// // 	})
-// // d3.selectAll(".mouseoverText").remove();
-// // if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
-// // 	console.log("yes");
-// // }
-
-
-// d3.select("circle.inCircle"+specialCirc)
-//   	.transition()
-//   	.duration(500)
-//   	.attr("opacity",".2")
-//   	.each("end",function(){
-
-// ///////////////////first subject
-
-// //SELECT ONE SUBJECT "CLICK IT"
-
-// 			matching = 0;
-// // if(calcX.length>connDataLength-1){
-// for (i=0; i<subjCode.length; i++){ 
-// 	if (subjCode[i]==specialSubj1){ 
-// 		specialIndex1 = i; 
-// 	}
-// 	if (subjCode[i]==specialSubj2){ 
-// 		specialIndex2 = i; 
-// 	}
-// 	if (subjCode[i]==specialSubj3){ 
-// 		specialIndex3 = i; 
-// 	}
-// }
-// 		d3.select(".surroundingPoints"+specialSubj1)
-// 			.transition()
-// 			// .delay(500)
-// 			.duration(1000)
-// 			.attr("y", subjY[specialIndex1]-10)
-// 			.attr("height",14)
-// 			.attr("stroke", colors[subjLoc[specialIndex1]])
-// 			.each("end",function(){
-// 			runLines(specialSubj1);
-// 			checkedIt.push(specialSubj1);
-// 			checked(checkedIt);				
-// 		// 	})
-
-
-
-// 		// .each("end",function(){
-// 		d3.select(".surroundingPoints"+specialSubj2)
-// 			.transition()
-// 			.delay(1000)
-// 			.duration(500)
-// 			.attr("y", subjY[specialIndex2]-10)
-// 			.attr("height",14)
-// 			.attr("stroke", colors[subjLoc[specialIndex2]])
-// 			.each("end",function(){
-// 			runLines(specialSubj2);
-// 			checkedIt.push(specialSubj2);
-// 			checked(checkedIt);				
-// 			// })	
-
-
-// 			// //CHECK THE ADJOINING LINES
-// 			// .each("end",function(){
-// 				d3.select(".surroundingPoints"+specialSubj3)
-// 					.transition()
-// 					.delay(3000)
-// 					.duration(500)
-// 					.attr("y", subjY[specialIndex3]-10)
-// 					.attr("height",14)
-// 					.attr("stroke", colors[subjLoc[specialIndex3]])
-// 					.each("end",function(){
-// 				runLines(specialSubj3);
-// 				checkedIt.push(specialSubj3);
-// 				checked(checkedIt);
-// 				// d3.select()
-// 		d3.select(".surroundingPoints"+specialSubj1)
-//   				.transition()
-//   				.duration(1000)
-//   				.attr("opacity",".9")
-//   				.each("end",function(){
-//   							d3.select("g").transition().attr("opacity",1)
-//   					// clearEverything();
-// 					})
-// 				})
-// 		})
-// 		// }
-// 		})
-// })
-// }
-	// if(manyBooks.length==126634 && manyIds.length==126634 && codeSorted.length==126634){
-	// 	console.log("yes")
-	// 	d3.select("g").transition().attr("opacity",1)
-	// }
-	// else{
-	// 	d3.select("g").transition().attr("opacity",.5)		
-	// }
 </script>
 
 </body>
